@@ -1,12 +1,56 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/shenghuo/shenghuo",
+    "pages/bianmin/bianmin",
+    "pages/huangye/huangye",
+    "pages/me/me"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#302f34",
+    "navigationBarTitleText": "人民好公仆",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+        "color": "#abadbb",
+        "selectedColor": "#0164a6",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "政务",
+        "iconPath": "images/tab/zhengwu.png",
+        "selectedIconPath": "images/tab/zhengwu_selected.png"
+      },
+      {
+        "pagePath": "pages/shenghuo/shenghuo",
+        "text": "生活",
+        "iconPath": "images/tab/sh.png",
+        "selectedIconPath": "images/tab/sh_selected.png"
+      },
+      {
+        "pagePath": "pages/bianmin/bianmin",
+        "text": "便民",
+        "iconPath": "images/tab/bianmin.png",
+        "selectedIconPath": "images/tab/bianmin_selected.png"
+      },
+      {
+        "pagePath": "pages/huangye/huangye",
+        "text": "黄页",
+        "iconPath": "images/tab/huangye.png",
+        "selectedIconPath": "images/tab/huangye_selected.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "我的",
+        "iconPath": "images/tab/me.png",
+        "selectedIconPath": "images/tab/me_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
   }
 }
