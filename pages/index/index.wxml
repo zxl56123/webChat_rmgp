@@ -1,10 +1,11 @@
 <!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<view>
+    <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
+        <swiper-item>
+            <image id="7" src="../../../images/carrousels/lunbo_01.png" data-postId="1"></image>
+        </swiper-item>
+        <swiper-item>
+            <image src="../../../images/carrousels/lunbo_02.png" data-postId="2"></image>
+        </swiper-item>
+    </swiper>
 </view>
