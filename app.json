@@ -5,7 +5,8 @@
     "pages/shenghuo/shenghuo",
     "pages/bianmin/bianmin",
     "pages/huangye/huangye",
-    "pages/me/me"
+    "pages/myself/myself",
+    "pages/index/HotNewsDetail/HotNewsDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -42,7 +43,7 @@
         "selectedIconPath": "images/tab/huangye_selected.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/myself/myself",
         "text": "我的",
         "iconPath": "images/tab/me.png",
         "selectedIconPath": "images/tab/me_selected.png"

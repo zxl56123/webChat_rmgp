@@ -1,11 +1,21 @@
+<import src="HotNewsCell/HotNewsCell.wxml" />
+
 <!--index.wxml-->
 <view>
-    <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
-        <swiper-item>
-            <image id="7" src="../../../images/carrousels/lunbo_01.png" data-postId="1"></image>
-        </swiper-item>
-        <swiper-item>
-            <image src="../../../images/carrousels/lunbo_02.png" data-postId="2"></image>
-        </swiper-item>
-    </swiper>
+  <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
+    <swiper-item>
+      <image id="7" src="/images/carrousels/lunbo_01.png" data-postId="1"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/carrousels/lunbo_02.png" data-postId="2"></image>
+    </swiper-item>
+  </swiper>
+  <view class="yaowen-container">
+    <text class="yaowen">要闻</text>
+  </view>
+  <block wx:for="{{list}}" wx:for-item="item">
+    <view class="hotNewsList-container" catchtap="tapHotNewsCell">
+      <template is="HotNewsCell" data="{{...item}}"></template>
+    </view>
+  </block>
 </view>
