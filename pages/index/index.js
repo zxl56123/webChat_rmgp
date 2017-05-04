@@ -4,6 +4,7 @@ var app = getApp()
 const config = require('../../config')
 const iconList = require('../../data/four-icon-data')
 
+var pageNo = 0;
 Page({
   data: {
     list: [],
@@ -40,6 +41,17 @@ Page({
 
   /** 下拉刷新 */
   loadNewData: function () {
+    pageNo = 1;
+    this.requestData()
+
+  },
+
+  loadNewData_NextPage: function () {
+    pageNo += 1;
+    this.requestData();
+  },
+
+  requestData: function () {
     var that = this
 
     wx.request({
@@ -54,7 +66,7 @@ Page({
         "imei": "A902EA47-B1B2-452A-96FB-4C7BCCBB149C",
         "currentVersion": "3.1.6",
         "sig": "",
-        "pageNo": "1",
+        "pageNo": pageNo,
         "model": "iPhone 6s Plus (A1699)",
         "pageSize": "20"
       },
@@ -67,6 +79,7 @@ Page({
       },
       fail: function (res) {
         // fail
+        pageNo--;
       },
       complete: function (res) {
         // complete
@@ -75,6 +88,7 @@ Page({
     })
 
   },
+
 
   onLoad: function () {
     console.log('onLoad')
@@ -107,7 +121,9 @@ Page({
   },
   onReachBottom: function () {
     // 页面上拉触底事件的处理函数
-
+    console.log("onReachBottom")
+    
+    this.loadNewData_NextPage()
   },
 
 
