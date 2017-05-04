@@ -9,10 +9,11 @@
     "pages/index/HotNewsDetail/HotNewsDetail"
   ],
   "window":{
-    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#302f34",
     "navigationBarTitleText": "人民好公仆",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"white",
+    "backgroundTextStyle":"dark",
+    "enablePullDownRefresh":true
   },
   "tabBar": {
         "color": "#abadbb",

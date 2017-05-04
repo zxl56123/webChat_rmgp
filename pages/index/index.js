@@ -9,21 +9,21 @@ Page({
     list: [],
   },
 
-/** 跳转（政务资讯、办事指南、办事大厅、办事攻略） */
-  tapGridCell:function(event) {
+  /** 跳转（政务资讯、办事指南、办事大厅、办事攻略） */
+  tapGridCell: function (event) {
     switch (event.currentTarget.dataset.iconId) {
       case 0:
-      console.log("点击政务资讯")
-      break
+        console.log("点击政务资讯")
+        break
       case 1:
-      console.log("点击办事指南")
-      break
+        console.log("点击办事指南")
+        break
       case 2:
-      console.log("点击办事大厅")
-      break
+        console.log("点击办事大厅")
+        break
       case 3:
-      console.log("点击办事攻略")
-      break
+        console.log("点击办事攻略")
+        break
     }
 
     //  wx.navigateTo({
@@ -38,12 +38,9 @@ Page({
     })
   },
 
-  onLoad: function () {
-    console.log('onLoad')
-
+  /** 下拉刷新 */
+  loadNewData: function () {
     var that = this
-    console.log(iconList)
-    that.setData(iconList)
 
     wx.request({
       url: config.GET_HOT_NEWS,
@@ -73,8 +70,18 @@ Page({
       },
       complete: function (res) {
         // complete
+        wx.stopPullDownRefresh()
       }
     })
+
+  },
+
+  onLoad: function () {
+    console.log('onLoad')
+
+    console.log(iconList)
+    this.setData(iconList)
+    this.loadNewData();
 
     //调用应用实例的方法获取全局数据
     // app.getUserInfo(function(userInfo){
@@ -92,7 +99,16 @@ Page({
     wx.navigateTo({
       url: "post-detail/post-detail?id=" + postId
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    // 页面相关事件处理函数--监听用户下拉动作
+    this.loadNewData();
+
+  },
+  onReachBottom: function () {
+    // 页面上拉触底事件的处理函数
+
+  },
 
 
 })
