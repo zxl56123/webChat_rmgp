@@ -1,4 +1,5 @@
 <import src="HotNewsCell/HotNewsCell.wxml" />
+<import src="GridIconCell/GridIconCell.wxml" />
 
 <!--index.wxml-->
 <view>
@@ -10,8 +11,18 @@
       <image src="/images/carrousels/lunbo_02.png" data-postId="2"></image>
     </swiper-item>
   </swiper>
+  <view class="iconList-container">
+    <block wx:for="{{iconList}}" wx:for-item="item" wx:for-index="idx">
+      <view class="iconList-container-block" catchtap="tapGridCell" data-icon-id="{{idx}}" >
+        <template is="GridIconCell" data="{{...item}}"></template>
+      </view>
+    </block>
+  </view>
+  <view class="spaceSeparateView"></view>
   <view class="yaowen-container">
-    <text class="yaowen">要闻</text>
+    <view class="yaowen-container-text">
+      <text class="yaowen">要闻</text>
+    </view>
   </view>
   <block wx:for="{{list}}" wx:for-item="item">
     <view class="hotNewsList-container" catchtap="tapHotNewsCell">

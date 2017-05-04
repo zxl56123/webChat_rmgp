@@ -2,13 +2,36 @@
 //获取应用实例
 var app = getApp()
 const config = require('../../config')
+const iconList = require('../../data/four-icon-data')
 
 Page({
   data: {
-    list: []
+    list: [],
   },
 
-/** 跳转要闻详情页面 */
+/** 跳转（政务资讯、办事指南、办事大厅、办事攻略） */
+  tapGridCell:function(event) {
+    switch (event.currentTarget.dataset.iconId) {
+      case 0:
+      console.log("点击政务资讯")
+      break
+      case 1:
+      console.log("点击办事指南")
+      break
+      case 2:
+      console.log("点击办事大厅")
+      break
+      case 3:
+      console.log("点击办事攻略")
+      break
+    }
+
+    //  wx.navigateTo({
+    //   url: 'HotNewsDetail/HotNewsDetail'
+    // })
+  },
+
+  /** 跳转要闻详情页面 */
   tapHotNewsCell: function (event) {
     wx.navigateTo({
       url: 'HotNewsDetail/HotNewsDetail'
@@ -19,6 +42,8 @@ Page({
     console.log('onLoad')
 
     var that = this
+    console.log(iconList)
+    that.setData(iconList)
 
     wx.request({
       url: config.GET_HOT_NEWS,
@@ -50,9 +75,6 @@ Page({
         // complete
       }
     })
-
-
-
 
     //调用应用实例的方法获取全局数据
     // app.getUserInfo(function(userInfo){
