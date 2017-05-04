@@ -33,7 +33,7 @@
   margin-top: 8rpx;
   margin-left: 8rpx;
   margin-right: 8rpx;
-  height: 120rpx;
+  height: 140rpx;
 }
 
 .hotNewsCell-title {
@@ -41,7 +41,7 @@
   margin-left: 8rpx;
   font-size: 16px;
   /*font-weight: bold;*/
-  height: 44px;
+  height: 84rpx;
   width: 506rpx;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -54,9 +54,8 @@
 .hotNewsCell-Subtitle {
   margin-top: 8rpx;
   margin-left: 8rpx;
-  margin-right: 8rpx;
   font-size: 15px;
-  height: 24px;
+  height: 42rpx;
   width: 506rpx;
   overflow: hidden;
   text-overflow: ellipsis;
