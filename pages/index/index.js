@@ -74,8 +74,16 @@ Page({
       header: { 'content-type': 'application/json' }, // 设置请求的 header
       success: function (res) {
         // success
-        that.setData({ list: res.data.data.list })
-        console.log(res)
+        if (pageNo == 1) {
+          that.setData({ list: res.data.data.list })
+          
+        }else {
+          that.setData({ list: that.data.list.concat(res.data.data.list) })
+
+        }
+
+        console.log(that.data.list)
+        
       },
       fail: function (res) {
         // fail
