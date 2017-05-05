@@ -20,9 +20,7 @@
   </view>
   <view class="spaceSeparateView"></view>
   <view class="yaowen-container">
-    <view class="yaowen-container-text">
       <text class="yaowen">要闻</text>
-    </view>
   </view>
   <block wx:for="{{list}}" wx:for-item="item">
     <view class="hotNewsList-container" catchtap="tapHotNewsCell">
