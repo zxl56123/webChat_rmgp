@@ -6,7 +6,8 @@
     "pages/bianmin/bianmin",
     "pages/huangye/huangye",
     "pages/myself/myself",
-    "pages/index/HotNewsDetail/HotNewsDetail"
+    "pages/index/HotNewsDetail/HotNewsDetail",
+    "pages/index/temp/temp"
   ],
   "window":{
     "navigationBarBackgroundColor": "#302f34",

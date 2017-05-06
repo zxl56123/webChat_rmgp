@@ -27,9 +27,9 @@ Page({
         break
     }
 
-    //  wx.navigateTo({
-    //   url: 'HotNewsDetail/HotNewsDetail'
-    // })
+     wx.navigateTo({
+      url: 'temp/temp'
+    })
   },
 
   /** 跳转要闻详情页面 */
