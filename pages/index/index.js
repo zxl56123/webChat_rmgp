@@ -2,7 +2,8 @@
 //获取应用实例
 var app = getApp()
 const config = require('../../config')
-const iconList = require('../../data/four-icon-data')
+const iconList = require('../../data/local-data')
+
 
 var pageNo = 0;
 Page({

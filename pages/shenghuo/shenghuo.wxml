@@ -1,8 +1,14 @@
-<!--<view class="classname">
-<text>生活</text>
-</view>-->
+<import src="../index/GridIconCell/GridIconCell.wxml" />
 
-<import src="../../wxParse/wxParse.wxml"/> 
-<view class="wxParse">
-    <template is="wxParse" data="{{wxParseData:htmlContentStr.nodes}}"/>
-</view>
+<view>
+
+<view class="iconList-container">
+    <block wx:for="{{shenghuoiconList}}" wx:for-item="item" wx:for-index="idx">
+      <view class="iconList-container-block" catchtap="tapGridCell" data-icon-id="{{idx}}" >
+        <template is="GridIconCell" data="{{...item}}"></template>
+      </view>
+    </block>
+  </view>
+  <view class="spaceSeparateView"></view>
+
+  </view>
