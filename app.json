@@ -1,13 +1,15 @@
 {
   "pages":[
+    "pages/shenghuo/shenghuo",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/shenghuo/shenghuo",
     "pages/bianmin/bianmin",
     "pages/huangye/huangye",
     "pages/myself/myself",
     "pages/index/HotNewsDetail/HotNewsDetail",
-    "pages/index/temp/temp"
+    "pages/index/temp/temp",
+    "pages/shenghuo/ttPrize/ttPrize",
+    "pages/shenghuo/ttPrize/ttPrizeCell/ttPrizeCell"
   ],
   "window":{
     "navigationBarBackgroundColor": "#302f34",
@@ -21,16 +23,16 @@
         "selectedColor": "#0164a6",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "政务",
-        "iconPath": "images/tab/zhengwu.png",
-        "selectedIconPath": "images/tab/zhengwu_selected.png"
-      },
-      {
         "pagePath": "pages/shenghuo/shenghuo",
         "text": "生活",
         "iconPath": "images/tab/sh.png",
         "selectedIconPath": "images/tab/sh_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "政务",
+        "iconPath": "images/tab/zhengwu.png",
+        "selectedIconPath": "images/tab/zhengwu_selected.png"
       },
       {
         "pagePath": "pages/bianmin/bianmin",

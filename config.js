@@ -3,6 +3,7 @@
  */
 
 var host = "http://gov.jointem.com/zyb/api"  //API请求接口
+var host_sh = "http://m.jointem.com"  //API请求接口
 var host_iamge = "http://gov.jointem.com"     //图片拼接前
 
 var config = {
@@ -16,6 +17,10 @@ var config = {
     // 测试的请求地址
     requestUrl: `${host}/testRequest`,
 
+    //生活
+    /** 天天有奖 */
+    ttPrizeUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`,
+    
 };
 
 module.exports = config

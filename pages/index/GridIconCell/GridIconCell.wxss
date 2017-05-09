@@ -16,4 +16,5 @@
 .iconTitle {
     margin-top: 12rpx;
     font-size: 13px;
+    line-height: 21rpx;
 }

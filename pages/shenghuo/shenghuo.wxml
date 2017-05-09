@@ -1,4 +1,5 @@
 <import src="../index/GridIconCell/GridIconCell.wxml" />
+<import src="ImageCell/ImageCell.wxml" />
 
 <view>
 
@@ -9,6 +10,25 @@
       </view>
     </block>
   </view>
+
   <view class="spaceSeparateView"></view>
 
-  </view>
+<view class="imageList-container"> 
+<block wx:for="{{shenghuoImageList1}}" wx:for-item="item" wx:for-index="idx">
+      <view class="imageList-container-block" catchtap="tapimageList1Cell" data-icon-id="{{idx}}" >
+        <template is="ImageCell" data="{{...item}}"></template>
+      </view>
+    </block>
+</view>
+
+<view class="imageList-container"> 
+<block wx:for="{{shenghuoImageList2}}" wx:for-item="item" wx:for-index="idx">
+      <view class="imageList-container-block" catchtap="tapimageList1Cell" data-icon-id="{{idx}}" >
+        <template is="ImageCell" data="{{...item}}"></template>
+      </view>
+    </block>
+</view>
+
+<view class="youxuanHeader"><text class="youxuanHeaderText">--优选推荐--</text>
+</view>
+</view>
