@@ -9,6 +9,9 @@ Page({
   /** 点击 */
   tapGridCell: function (event) {
     console.log(event.currentTarget.dataset.iconId)
+    wx.navigateTo({
+      url: '/pages/logs/logs'
+    })
   },
 
   tapimageList1Cell: function (event){

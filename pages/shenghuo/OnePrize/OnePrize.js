@@ -1,6 +1,6 @@
 // pages/shenghuo/OnePrize/OnePrize.js
 const config = require('../../../config')
-
+var pageNo = 0;
 Page({
 
   /**
@@ -10,15 +10,29 @@ Page({
     onePrizeList: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onScrollLower: function (event) {
+    console.log(event)
+    //加载更多
+    this.loadNewData_NextPage()
+  },
+
+  /** 下拉刷新 */
+  loadNewData: function () {
+    pageNo = 1;
+    this.requestData()
+
+  },
+  loadNewData_NextPage: function () {
+    pageNo += 1;
+    this.requestData();
+  },
+
+  requestData: function () {
     var that = this
     wx.request({
       url: config.onePrizeUrl,
       data: {
-        "pageNum": 1,
+        "pageNum": pageNo,
         "pageSize": 10
       },
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -38,6 +52,12 @@ Page({
       }
     })
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    this.loadNewData()
+  },
 
   handleResponseData: function (dataList) {
     var tempList = [];
@@ -56,7 +76,15 @@ Page({
       tempList.push(temp)
     }
 
-    this.setData({ onePrizeList: tempList })
+    if(pageNo == 1) {
+
+      this.setData({ onePrizeList: tempList })
+    }else {
+      this.setData({ onePrizeList: this.data.onePrizeList.concat(tempList) })
+
+    }
+
+    
     console.log(this.data.onePrizeList)
 
   },
