@@ -1,7 +1,8 @@
-
-<view class="classname">
-<button> click </button>
-<label> errrrr </label>
-
-
+<import src="../index/HotNewsCell/HotNewsCell.wxml" />
+<view class="bianmin-container">
+<block wx:for="{{list}}" wx:for-item="item">
+    <view class="hotNewsList-container" catchtap="tapHotNewsCell">
+      <template is="HotNewsCell" data="{{...item}}"></template>
+    </view>
+  </block>
 </view>

@@ -18,6 +18,7 @@
     "backgroundTextStyle":"dark",
     "enablePullDownRefresh":true
   },
+
   "tabBar": {
         "color": "#abadbb",
         "selectedColor": "#0164a6",
@@ -39,12 +40,6 @@
         "text": "便民",
         "iconPath": "images/tab/bianmin.png",
         "selectedIconPath": "images/tab/bianmin_selected.png"
-      },
-      {
-        "pagePath": "pages/huangye/huangye",
-        "text": "黄页",
-        "iconPath": "images/tab/huangye.png",
-        "selectedIconPath": "images/tab/huangye_selected.png"
       },
       {
         "pagePath": "pages/myself/myself",
