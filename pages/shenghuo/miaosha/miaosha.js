@@ -1,18 +1,60 @@
 // pages/shenghuo/miaosha/miaosha.js
+const config = require('../../../config')
+var pageNo = 0;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    miaoshaList:[]
   },
 
+
+  /** 下拉刷新 */
+  loadNewData: function () {
+    pageNo = 1;
+    this.requestData()
+
+  },
+  loadNewData_NextPage: function () {
+    pageNo += 1;
+    this.requestData();
+  },
+
+  requestData: function () {
+    var that = this
+    wx.request({
+      url: config.miaoshaUrl,
+      data: {
+        "pageNum": pageNo,
+        "limit": 20,
+        "sessionType": 2,
+        "typeId": 4
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+        // success
+
+        that.setData({ miaoshaList: res.data.data.categoryObj })
+        console.log(that.data.miaoshaList)
+        
+      },
+      fail: function (res) {
+        // fail
+      },
+      complete: function (res) {
+        // complete
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.loadNewData()
+
   },
 
   /**

@@ -23,6 +23,9 @@ Page({
       })
       break;
       case 1:
+        wx.navigateTo({
+          url: 'miaosha/miaosha',
+        })
       break;
       case 2:
       //一元夺宝
@@ -30,9 +33,8 @@ Page({
           url: 'OnePrize/OnePrize',
         })
       break;
-      case 3:
+      default:
       break;
-
     }
     
     console.log(event.currentTarget.dataset.iconId)
