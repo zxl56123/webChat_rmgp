@@ -11,7 +11,9 @@
     "pages/shenghuo/ttPrize/ttPrize",
     "pages/shenghuo/ttPrize/ttPrizeCell/ttPrizeCell",
     "pages/shenghuo/OnePrize/OnePrize",
-    "pages/shenghuo/OnePrize/OnePrizeCell/OnePrizeCell"
+    "pages/shenghuo/OnePrize/OnePrizeCell/OnePrizeCell",
+    "pages/shenghuo/miaosha/miaosha",
+    "pages/shenghuo/miaosha/miaoshaCell/miaoshaCell"
   ],
   "window":{
     "navigationBarBackgroundColor": "#302f34",
