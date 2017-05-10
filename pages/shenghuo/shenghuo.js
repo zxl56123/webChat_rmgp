@@ -22,6 +22,10 @@ Page({
       case 1:
       break;
       case 2:
+      //一元夺宝
+        wx.navigateTo({
+          url: 'OnePrize/OnePrize',
+        })
       break;
       case 3:
       break;

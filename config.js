@@ -18,8 +18,9 @@ var config = {
     requestUrl: `${host}/testRequest`,
 
     //生活
-    /** 天天有奖 */
-    ttPrizeUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`,
+    
+    ttPrizeUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`,/** 天天有奖 */
+    onePrizeUrl: `${host_sh}/front/public/oyb/getServantPrdList`, /** 一元夺宝 */
     
 };
 

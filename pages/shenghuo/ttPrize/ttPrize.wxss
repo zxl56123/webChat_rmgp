@@ -1,5 +1,5 @@
 /* pages/shenghuo/ttPrize/ttPrize.wxss */
-@import "ttPrizeCell/ttPrizeCell.wxss"
+@import "ttPrizeCell/ttPrizeCell.wxss";
 
 
 .ttPrizeCell-container {
