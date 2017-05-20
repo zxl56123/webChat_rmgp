@@ -1,7 +1,9 @@
 // pages/bianmin/bianmin.js
 
 const config = require('../../config')
-var pageNo = 0;
+var pageNo = new Array();
+var dic = new Array();
+
 Page({
   data: {
     currentTabIndex: 1,
@@ -10,9 +12,9 @@ Page({
   },
   clickOrderTab: function (e) {
     //data = {};
-    
+
     var dataset = e.target.dataset
-    
+
     this.setData({ currentTabIndex: dataset.index })
 
     // data['pages'] = 1;
@@ -24,6 +26,16 @@ Page({
 
     // this.setData(data);
     // this.getOrderList({ tabIndex: index });
+    var index = parseInt(dataset.index)
+    if (this.data.list[index]) {
+      //有数据
+      //nothing
+    } else {
+      //没有数据
+      this.loadNewData(this.data.currentTabIndex);
+    }
+
+
   },
   /** 跳转要闻详情页面 */
   tapHotNewsCell: function (event) {
@@ -34,11 +46,11 @@ Page({
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
     console.log('onLoad')
-    
+
     //this.setData({ newsTagList : ["本地新闻","工作动态","信息公开","互动交流","招标公告"]})
     this.requestNewsTagData();
 
-    this.loadNewData();
+    this.loadNewData(this.data.currentTabIndex);
 
   },
   onReady: function () {
@@ -56,17 +68,68 @@ Page({
   },
 
   /** 下拉刷新 */
-  loadNewData: function () {
-    pageNo = 1;
-    this.requestData()
+  loadNewData: function (tabIndex) {
+    
+    pageNo[tabIndex] = 1;
+    this.requestData(tabIndex)
 
   },
 
-  loadNewData_NextPage: function () {
-    pageNo += 1;
-    this.requestData();
+  /** 上拉加载 */
+  loadNewData_NextPage: function (tabIndex) {
+    
+    pageNo[tabIndex] += 1;
+    this.requestData(tabIndex);
   },
-  requestNewsTagData:function () {
+
+  requestData: function (tabIndex) {
+    var that = this
+
+    wx.request({
+      url: config.GET_HOT_NEWS + "?accessToken=",
+      data: {
+        "system": "02",
+        "tagId": tabIndex,
+        "accessToken": "",
+        "scopeAddressCode": "5304",
+        "key": "",
+        "systemVersion": "10.1.1",
+        "imei": "C75C7019-29FA-4F2B-8311-BAA6F29D1845",
+        "currentVersion": "3.1.6",
+        "sig": "",
+        "pageNo": pageNo[tabIndex].toString(),
+        "model": "iPhone 5s (A1457\/A1518\/A1528\/A1530)",
+        "pageSize": "20"
+      },
+      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      header: { 'content-type': 'application/json' }, // 设置请求的 header
+      success: function (res) {
+        // success
+        if (pageNo[tabIndex] == 1) {
+          dic[tabIndex] = res.data.data.list;
+          that.setData({ list: dic })
+
+        } else {
+          dic[tabIndex] = dic[tabIndex].concat(res.data.data.list);
+          that.setData({ list: dic })
+
+        }
+
+        console.log(that.data.list)
+
+      },
+      fail: function (res) {
+        // fail
+        pageNo[tabIndex] -= 1;
+      },
+      complete: function (res) {
+        // complete
+        wx.stopPullDownRefresh()
+      }
+    })
+
+  },
+  requestNewsTagData: function () {
     var that = this
     var tempNewsTagList = new Array();
     wx.request({
@@ -89,75 +152,38 @@ Page({
 
         that.setData({ newsTagList: tempNewsTagList })
         console.log(that.data.newsTagList)
-      },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
-        
-      }
-    })
 
-
-  },
-
-  requestData: function () {
-    var that = this
-
-    wx.request({
-      url: config.GET_HOT_NEWS + "?accessToken=",
-      data: {
-        "system": "02",
-        "tagId": "1",
-        "accessToken": "",
-        "scopeAddressCode": "5304",
-        "key": "",
-        "systemVersion": "10.1.1",
-        "imei": "C75C7019-29FA-4F2B-8311-BAA6F29D1845",
-        "currentVersion": "3.1.6",
-        "sig": "",
-        "pageNo": "1",
-        "model": "iPhone 5s (A1457\/A1518\/A1528\/A1530)",
-        "pageSize": "20"
-      },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: { 'content-type': 'application/json' }, // 设置请求的 header
-      success: function (res) {
-        // success
-        if (pageNo == 1) {
-          that.setData({ list: res.data.data.list })
-
-        } else {
-          that.setData({ list: that.data.list.concat(res.data.data.list) })
+        //初始化每个页面的pageNO
+        for (var i = 0; i < tempNewsTagList.count; i++ ){
+          var model = tempNewsTagList[i];
+          
+          pageNo[model[id]] = 1;
 
         }
 
-        console.log(that.data.list)
-
       },
       fail: function (res) {
         // fail
-        pageNo--;
       },
       complete: function (res) {
         // complete
-        wx.stopPullDownRefresh()
+
       }
     })
+
 
   },
 
   onPullDownRefresh: function () {
     // 页面相关事件处理函数--监听用户下拉动作
-    this.loadNewData();
+    this.loadNewData(this.data.currentTabIndex);
 
   },
   onReachBottom: function () {
     // 页面上拉触底事件的处理函数
     console.log("onReachBottom")
 
-    this.loadNewData_NextPage()
+    this.loadNewData_NextPage(this.data.currentTabIndex)
   }
 
 })

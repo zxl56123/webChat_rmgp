@@ -23,12 +23,13 @@
 
   </scroll-view>
 
-
-  <view class="bianmin-container">
-    <block wx:for="{{list}}" wx:for-item="item">
+<block wx:for="{{newsTagList}}" wx:for-item="item">
+  <view class="bianmin-container" hidden="{{currentTabIndex != item.id}}">
+    <block wx:for="{{list[item.id]}}" wx:for-item="item">
       <view class="hotNewsList-container" catchtap="tapHotNewsCell">
         <template is="HotNewsCell" data="{{...item}}"></template>
       </view>
     </block>
   </view>
+  </block>
 </view>
