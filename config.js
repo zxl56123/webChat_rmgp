@@ -13,6 +13,8 @@ var config = {
 
     // 获取新闻动态
     GET_HOT_NEWS: `${host}/hotNews/public/getHotNews?accessToken=`,
+    // 获取政务资讯顶部标签
+    newsTagUrl: `${host}/newstag/public/getnewstag`,
 
     // 测试的请求地址
     requestUrl: `${host}/testRequest`,
