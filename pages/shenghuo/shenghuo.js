@@ -8,10 +8,26 @@ Page({
 
   /** 点击 */
   tapGridCell: function (event) {
-    console.log(event.currentTarget.dataset.iconId)
-    wx.navigateTo({
-      url: '/pages/logs/logs'
-    })
+    let index = event.currentTarget.dataset.iconId
+    console.log(index)
+
+    switch (index) {
+      case 0:
+      wx.navigateTo({
+        url: 'ValuePreference/ValuePreference',
+      })
+      break;
+      case 1:
+      case 2:
+      case 3:
+        wx.navigateTo({
+          url: '/pages/logs/logs'
+        })
+      break;
+
+    }    
+
+    
   },
 
   tapimageList1Cell: function (event){

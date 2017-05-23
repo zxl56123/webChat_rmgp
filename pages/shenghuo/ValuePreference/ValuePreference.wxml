@@ -1,0 +1,10 @@
+<view class="valuePreference-container">
+  <view class="counpon-oparition-city">
+    <view class="city-location-tittle" bindtap="showList()">玉溪市</view>
+  </view>
+  <scroll-view class="scroll-view_container selected" scroll-x="true" bindscroll="scroll">
+    <block wx:for="{{CouponCategoryList}}" wx:for-item="item">
+      <view class="flex-sub-box-5 {{ currentTabIndex == item.id ? 'active' : '' }}" bindtap="clickOrderTab" data-index="{{item.id}}">{{item.cateName}}</view>
+    </block>
+  </scroll-view>
+</view>

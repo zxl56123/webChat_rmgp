@@ -1,0 +1,60 @@
+.valuePreference-container {
+  width: 100%;
+  height: 40px;
+  flex-direction: row;
+  display: flex;
+}
+
+.counpon-oparition-city{
+  position: absolute;
+  height: 40px;
+  line-height: 40px;
+  width: 160rpx;
+  left: 0;
+  background: #0164a6;
+  color: #ffffff;
+  align-items: center;
+}
+
+.city-location-tittle{
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.scroll-view_container {
+  margin-left: 160rpx;
+  margin-right: 0;
+  margin-top: 0;
+  white-space: nowrap;
+  position: fixed;
+  background-color: white;
+  line-height: 40px;
+  height: 40px;
+  background: #0164a6;
+  text-align: center;
+  font-size: 30rpx;
+}
+
+.selected {
+  color: #ffffff;
+}
+
+.selected view {
+  color: #ffffff;
+}
+
+.selected view.active {
+  color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+.flex-sub-box-5 {
+  display: inline-block;
+  width: 25%;
+  height: 36px;
+  align-items: center;
+}

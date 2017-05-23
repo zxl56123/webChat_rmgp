@@ -13,7 +13,8 @@
     "pages/shenghuo/OnePrize/OnePrize",
     "pages/shenghuo/OnePrize/OnePrizeCell/OnePrizeCell",
     "pages/shenghuo/miaosha/miaosha",
-    "pages/shenghuo/miaosha/miaoshaCell/miaoshaCell"
+    "pages/shenghuo/miaosha/miaoshaCell/miaoshaCell",
+    "pages/shenghuo/ValuePreference/ValuePreference"
   ],
   "window":{
     "navigationBarBackgroundColor": "#302f34",
