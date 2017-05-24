@@ -7,4 +7,29 @@
       <view class="flex-sub-box-5 {{ currentTabIndex == item.id ? 'active' : '' }}" bindtap="clickOrderTab" data-index="{{item.id}}">{{item.cateName}}</view>
     </block>
   </scroll-view>
+
+  <view class="dropmenu">
+    <view class="nav">
+      <view class="nav-son borders {{shownavindex == 1? 'active' : ''}}" bindtap="listprice" data-nav="1">
+        <view class="content">{{priceSelectedName}}</view>
+        <view class="icon"></view>
+      </view>
+      <view class="nav-son {{shownavindex == 2? 'active' : ''}}" bindtap="listquancheng" data-nav="2">
+        <view class="content">{{quanchengSelectedName}}</view>
+        <view class="icon"></view>
+      </view>
+    </view>
+
+    <view class="temp temp1 {{priceopen ? 'slidown' : 'slidup'}} {{priceshow ? 'disappear':''}}">
+      <view wx:for="{{content}}">
+        <view bindtap="tapPriceCell" data-index="{{index}}">{{item}}</view>
+      </view>
+    </view>
+    <view class="temp temp2 {{quanchengopen ? 'slidown' : 'slidup'}} {{quanchengshow ? 'disappear':''}}">
+      <view wx:for="{{content}}">
+        <view bindtap="tapQuanchengCell" data-index="{{index}}">{{item}}</view>
+      </view>
+    </view>
+    <view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+  </view>
 </view>
