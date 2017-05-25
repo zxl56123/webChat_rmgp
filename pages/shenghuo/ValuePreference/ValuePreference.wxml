@@ -1,15 +1,15 @@
-
+<import src="ValuePreferenceCell/ValuePreferenceCell.wxml" />
 <view>
-<view class="top-container">
-  <view class="counpon-oparition-city">
-    <view class="city-location-tittle" bindtap="showList()">玉溪市</view>
+  <view class="top-container">
+    <view class="counpon-oparition-city">
+      <view class="city-location-tittle" bindtap="showList()">玉溪市</view>
+    </view>
+    <scroll-view class="scroll-view_container selected" scroll-x="true" bindscroll="scroll">
+      <block wx:for="{{CouponCategoryList}}" wx:for-item="item">
+        <view class="flex-sub-box-5 {{ currentTabIndex == item.id ? 'active' : '' }}" bindtap="clickOrderTab" data-index="{{item.id}}">{{item.cateName}}</view>
+      </block>
+    </scroll-view>
   </view>
-  <scroll-view class="scroll-view_container selected" scroll-x="true" bindscroll="scroll">
-    <block wx:for="{{CouponCategoryList}}" wx:for-item="item">
-      <view class="flex-sub-box-5 {{ currentTabIndex == item.id ? 'active' : '' }}" bindtap="clickOrderTab" data-index="{{item.id}}">{{item.cateName}}</view>
-    </block>
-  </scroll-view>
-</view>
   <view class="dropmenu">
     <view class="nav">
       <view class="nav-son borders {{shownavindex == 1? 'active' : ''}}" bindtap="listprice" data-nav="1">
@@ -32,12 +32,13 @@
         <view bindtap="tapQuanchengCell" data-index="{{index}}">{{item}}</view>
       </view>
     </view>
-    <view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+    <!--<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>-->
   </view>
 
   <view class="couponSearchList-container">
     <block wx:for="{{CouponSearchList}}" wx:for-item="item">
-      <view class="CouponSearchListCell">{{item.doorName}}</view>
+      <!--<view class="CouponSearchListCell">{{item.doorName}}</view>-->
+      <template is="ValuePreferenceCell" data="{{...item}}"></template>
     </block>
   </view>
 </view>
