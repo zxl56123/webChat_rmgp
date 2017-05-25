@@ -1,5 +1,5 @@
 const config = require('../../../config')
-
+var util = require('../../../utils/util.js')
 Page({
 
   /**
@@ -50,55 +50,60 @@ Page({
       quancheng: ['1千米', '3千米', '5千米', '10千米', '全城']
     })
 
-    this.requestCouponCategory("玉溪市")
+    /** 获取定位 */
+    util.getLocation((successRes, failRes) => {
+      console.log(successRes)
+      console.log(failRes)
+    }),
 
-    this.requestCouponSearchList("本地生活","美食","玉溪市")
+      this.requestCouponCategory("玉溪市")
+
+    this.requestCouponSearchList("本地生活", "美食", "玉溪市")
   },
+
+  // processCouponCategoryData: function (successRes, failRes) {
+  //   console.log(successRes)
+  //   console.log(failRes)
+  // },
 
   requestCouponCategory: function (cityName) {
 
     var that = this;
+    let url = config.couponCategoryUrl
 
-    wx.request({
-      url: config.couponCategoryUrl,
-      data: {
-        "city": cityName,
-        "country": null
-      },
-      header: { 'content-type': 'application/json' },
-      method: 'POST',
-      dataType: '',
-      success: function (res) {
-        var dic = new Array()
-        var index = 0;
-        for (var i = 0; i < res.data.data.length; i++) {
-          let model = res.data.data[i];
-          let array = model["nextCate"];
-          for (var j = 0; j < array.length; j++) {
-            let model_j = array[j];
-            var temp = {};
-            temp["id"] = index;
-            temp["count"] = model_j["count"];
-            temp["cateName"] = model_j["cateName"];
-            dic.push(temp);
-            index++;
-          }
+    var para = {
+      "city": cityName,
+      "country": null
+    }
+
+    util.RequestManager(url, para, function (res, fail) {
+
+      var dic = new Array()
+      var index = 0;
+      for (var i = 0; i < res.data.length; i++) {
+        let model = res.data[i];
+        let array = model["nextCate"];
+        for (var j = 0; j < array.length; j++) {
+          let model_j = array[j];
+          var temp = {};
+          temp["id"] = index;
+          temp["count"] = model_j["count"];
+          temp["cateName"] = model_j["cateName"];
+          dic.push(temp);
+          index++;
         }
+      }
 
-        that.setData({ CouponCategoryList: dic })
-        //console.log(that.data.CouponCategoryList)
+      that.setData({ CouponCategoryList: dic })
 
-      },
-      fail: function (res) { },
-      complete: function (res) { },
+      // console.log(that.data.CouponCategoryList)
+
     })
-
-
   },
 
   /** 好优惠搜索 */
   requestCouponSearchList: function (doorCateName, fcName, cityName) {
-   
+
     var that = this
 
     wx.request({
@@ -120,15 +125,15 @@ Page({
       header: { 'content-type': 'application/json' },
       method: 'POST',
       dataType: '',
-      success: function(res) {
-        
+      success: function (res) {
 
-        that.setData({ CouponSearchList: res.data.data.dataList})
+
+        that.setData({ CouponSearchList: res.data.data.dataList })
         console.log(that.data.CouponSearchList)
 
       },
-      fail: function(res) {},
-      complete: function(res) {},
+      fail: function (res) { },
+      complete: function (res) { },
     })
 
   },
@@ -181,7 +186,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  
+
   listprice: function (e) {
     if (this.data.priceopen) {
       this.setData({
@@ -236,13 +241,13 @@ Page({
     console.log(e.target)
   },
   tapPriceCell: function (e) {
-    this.listprice("1")
+    this.listprice("") /** 点击收起下拉菜单 */
     let index = e.currentTarget.dataset.index
     this.setData({ priceSelectedName: this.data.priceAndDistance[index] })
     console.log(this.data.priceSelectedName)
   },
   tapQuanchengCell: function (e) {
-    this.listquancheng("2")
+    this.listquancheng("") /** 点击收起下拉菜单 */
     let index = e.currentTarget.dataset.index
     this.setData({ quanchengSelectedName: this.data.quancheng[index] })
     console.log(this.data.quanchengSelectedName)
