@@ -3,7 +3,7 @@
 <view>
   <scroll-view class="scroll-view_container selected" scroll-x="true" bindscroll="scroll" style="width: 100%">
 
-    <block wx:for="{{newsTagList}}" wx:for-item="item">
+    <block wx:for="{{newsTagList}}" wx:for-item="item" wx:key="key">
       <!--<block wx:if="{{currentTabIndex == item.id}}">
         <view class="flex-sub-box-5 active" bindtap="clickOrderTab" data-index="{{item.id}}"> {{item.tagName}}</view>
       </block>
@@ -23,9 +23,9 @@
 
   </scroll-view>
 
-<block wx:for="{{newsTagList}}" wx:for-item="item">
+<block wx:for="{{newsTagList}}" wx:for-item="item" wx:key="key">
   <view class="bianmin-container" hidden="{{currentTabIndex != item.id}}">
-    <block wx:for="{{list[item.id]}}" wx:for-item="item">
+    <block wx:for="{{list[item.id]}}" wx:for-item="item" wx:key="key">
       <view class="hotNewsList-container" catchtap="tapHotNewsCell">
         <template is="HotNewsCell" data="{{...item}}"></template>
       </view>

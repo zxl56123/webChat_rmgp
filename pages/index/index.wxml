@@ -12,7 +12,7 @@
     </swiper-item>
   </swiper>
   <view class="iconList-container">
-    <block wx:for="{{iconList}}" wx:for-item="item" wx:for-index="idx">
+    <block wx:for="{{iconList}}" wx:for-item="item" wx:for-index="idx" wx:key="key">
       <view class="iconList-container-block" catchtap="tapGridCell" data-icon-id="{{idx}}" >
         <template is="GridIconCell" data="{{...item}}"></template>
       </view>
@@ -22,7 +22,7 @@
   <view class="yaowen-container">
       <text class="yaowen">要闻</text>
   </view>
-  <block wx:for="{{list}}" wx:for-item="item">
+  <block wx:for="{{list}}" wx:for-item="item" wx:key="key">
     <view class="hotNewsList-container" catchtap="tapHotNewsCell">
       <template is="HotNewsCell" data="{{...item}}"></template>
     </view>

@@ -3,7 +3,7 @@
 
 <import src="miaoshaCell/miaoshaCell.wxml"/>
 
-<block wx:for="{{miaoshaList}}" wx:for-item="item">
+<block wx:for="{{miaoshaList}}" wx:for-item="item" wx:key="key">
     <view class="miaoshaList-container" catchtap="tapmiaoshaCell">
       <template is="miaoshaCell" data="{{...item}}"></template>
     </view>
