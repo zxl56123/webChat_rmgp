@@ -24,7 +24,8 @@ var config = {
     ttPrizeUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`,/** 天天有奖 */
     onePrizeUrl: `${host_sh}/front/public/oyb/getServantPrdList`, /** 一元夺宝 */
     miaoshaUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`, /** 一元夺宝 */
-    couponCategoryUrl: `${host_sh}/front/public/search/getCouponCategory`, /** 好优惠搜索 */
+    couponCategoryUrl: `${host_sh}/front/public/search/getCouponCategory`, /** 获取优惠券分类 */
+    CouponSearchListUrl: `${host_sh}/front/public/search/getCouponSearchList`, /*好优惠搜索*/
 };
 
 module.exports = config

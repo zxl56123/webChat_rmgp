@@ -7,7 +7,8 @@ Page({
    */
   data: {
     currentTabIndex: 0,
-    CouponCategoryList: [],
+    CouponCategoryList: [], /** 好优惠分类列表 */
+    CouponSearchList: [], /** 好优惠搜索列表 */
 
     content: [],
     priceAndDistance: [],
@@ -50,6 +51,8 @@ Page({
     })
 
     this.requestCouponCategory("玉溪市")
+
+    this.requestCouponSearchList("本地生活","美食","玉溪市")
   },
 
   requestCouponCategory: function (cityName) {
@@ -93,6 +96,42 @@ Page({
 
   },
 
+  /** 好优惠搜索 */
+  requestCouponSearchList: function (doorCateName, fcName, cityName) {
+   
+    var that = this
+
+    wx.request({
+      url: config.CouponSearchListUrl,
+      data: {
+        "pageNum": 1,
+        "pageSize": 20,
+        "doorCateName": doorCateName,
+        "fcName": fcName,
+        "position": {
+          "distance": null,
+          "latitude": null,
+          "longitude": null
+        },
+        "sortType": 1,
+        "city": cityName,
+        "country": null
+      },
+      header: { 'content-type': 'application/json' },
+      method: 'POST',
+      dataType: '',
+      success: function(res) {
+        
+
+        that.setData({ CouponSearchList: res.data.data.dataList})
+        console.log(that.data.CouponSearchList)
+
+      },
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

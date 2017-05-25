@@ -1,0 +1,7 @@
+<template name="ValuePreferenceCell">
+
+<view class="ValuePreferenceCell-container">
+
+</view>
+
+</template>
