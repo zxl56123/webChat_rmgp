@@ -1,15 +1,20 @@
 const config = require('../../../config')
 var util = require('../../../utils/util.js')
+var locationManager = require('../../../utils/locationManager.js')
+
+let TENCENT_KEY = "AJPBZ-S6MRU-NFIVK-4BH5A-IZA57-OKB24"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    localCtiyName: "定位中...",  /** 当前定位城市 */
     currentTabIndex: 0,
     CouponCategoryList: [], /** 好优惠分类列表 */
     CouponSearchList: [], /** 好优惠搜索列表 */
-
+    
     content: [],
     priceAndDistance: [],
     quancheng: [],
@@ -54,6 +59,13 @@ Page({
     util.getLocation((successRes, failRes) => {
       console.log(successRes)
       console.log(failRes)
+      // var location = locationManager.gcj02tobd09(successRes.longitude, successRes.latitude)
+      // this.loadCity(location[0], location[1])
+
+      var location = locationManager.wgs2bd(successRes.longitude, successRes.latitude)
+      this.loadCity(location[0], location[1])
+
+      // this.loadCity(successRes.longitude, successRes.latitude)
     }),
 
       this.requestCouponCategory("玉溪市")
@@ -65,6 +77,51 @@ Page({
   //   console.log(successRes)
   //   console.log(failRes)
   // },
+
+  /** 获取定位城市 */
+  loadCity: function (longitude, latitude) {
+    var that = this
+
+    console.log('https://api.map.baidu.com/geocoder/v2/?ak=0FuoX30MFf7YMrdS5Wi9GGAcHBblKDuu&callback=?&location=' + latitude + ',' + longitude + '&output=json')
+    
+    wx.request({
+
+      // url: 'http://apis.map.qq.com/ws/geocoder/v1/?location=' + latitude + ',' + longitude + '&key=' + TENCENT_KEY,  
+      url: 'https://api.map.baidu.com/geocoder/v2/?ak=0FuoX30MFf7YMrdS5Wi9GGAcHBblKDuu&callback=?&location=' + latitude + ',' + longitude + '&output=json',
+
+      data: {},
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        // success  
+        console.log(res);
+
+        // that.setData({
+        //   nation: res.data.result.address_component.nation,
+        //   province: res.data.result.address_component.province,
+        //   city: res.data.result.address_component.city,
+        //   district: res.data.result.address_component.district,
+        //   street: res.data.result.address_component.street,
+        //   street_number: res.data.result.address_component.street_number
+        // })
+
+        //console.log(that.data.nation, that.data.province, that.data.city)
+
+        var city = res.data.result.addressComponent.city;
+        that.setData({ localCtiyName: city });
+        console.log(city);
+      },
+      fail: function () {
+        // fail  
+      },
+      complete: function () {
+        // complete  
+      }
+    })
+  },
+
 
   requestCouponCategory: function (cityName) {
 

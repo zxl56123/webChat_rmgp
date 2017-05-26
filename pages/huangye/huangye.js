@@ -37,8 +37,8 @@ Page({
 
     wx.request({
 
-      url: 'http://apis.map.qq.com/ws/geocoder/v1/?location=' + latitude + ',' + longitude + '&key=' + TENCENT_KEY,  
-      //url: 'https://api.map.baidu.com/geocoder/v2/?ak=0FuoX30MFf7YMrdS5Wi9GGAcHBblKDuu&callback=?&location=' + latitude + ',' + longitude + '&output=json',
+      // url: 'http://apis.map.qq.com/ws/geocoder/v1/?location=' + latitude + ',' + longitude + '&key=' + TENCENT_KEY,  
+      url: 'https://api.map.baidu.com/geocoder/v2/?ak=0FuoX30MFf7YMrdS5Wi9GGAcHBblKDuu&callback=?&location=' + latitude + ',' + longitude + '&output=json',
       
       data: {},
       method: 'GET',
