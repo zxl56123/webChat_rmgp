@@ -1,5 +1,5 @@
 <import src="ValuePreferenceCell/ValuePreferenceCell.wxml" />
-<view>
+<view  class="page-container">
   <view class="top-container">
     <view class="counpon-oparition-city">
       <view class="city-location-tittle" bindtap="showList()">玉溪市</view>
@@ -10,7 +10,7 @@
       </block>
     </scroll-view>
   </view>
-  <view class="dropmenu">
+  
     <view class="nav">
       <view class="nav-son borders {{shownavindex == 1? 'active' : ''}}" bindtap="listprice" data-nav="1">
         <view class="content">{{priceSelectedName}}</view>
@@ -32,8 +32,7 @@
         <view bindtap="tapQuanchengCell" data-index="{{index}}">{{item}}</view>
       </view>
     </view>
-    <!--<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>-->
-  </view>
+    <view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
 
   <view class="couponSearchList-container">
     <block wx:for="{{CouponSearchList}}" wx:for-item="item" wx:key="key">

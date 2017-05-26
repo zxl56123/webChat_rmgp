@@ -11,6 +11,7 @@
   margin: 0px 0px 5px 0px;
   position: relative;
   /*background-image: url(../../../iamges/shenghuo/lingquan/quan04.png);*//*background-image: url(http://m.jointem.com/lqz13577759356/img/20170506/1494033602952865.jpg);*/
+  
 }
 
 .backgroundImg {

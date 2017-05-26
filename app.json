@@ -8,14 +8,14 @@
     "pages/myself/myself",
     "pages/index/HotNewsDetail/HotNewsDetail",
     "pages/index/temp/temp",
-    "pages/shenghuo/ttPrize/ttPrize",
     "pages/shenghuo/ttPrize/ttPrizeCell/ttPrizeCell",
-    "pages/shenghuo/OnePrize/OnePrize",
+    "pages/shenghuo/ttPrize/ttPrize",
     "pages/shenghuo/OnePrize/OnePrizeCell/OnePrizeCell",
-    "pages/shenghuo/miaosha/miaosha",
+    "pages/shenghuo/OnePrize/OnePrize",
     "pages/shenghuo/miaosha/miaoshaCell/miaoshaCell",
-    "pages/shenghuo/ValuePreference/ValuePreference",
-    "pages/shenghuo/ValuePreference/ValuePreferenceCell/ValuePreferenceCell"
+    "pages/shenghuo/miaosha/miaosha",
+    "pages/shenghuo/ValuePreference/ValuePreferenceCell/ValuePreferenceCell",
+    "pages/shenghuo/ValuePreference/ValuePreference"
   ],
   "window":{
     "navigationBarBackgroundColor": "#302f34",
