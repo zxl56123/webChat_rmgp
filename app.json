@@ -15,7 +15,8 @@
     "pages/shenghuo/miaosha/miaoshaCell/miaoshaCell",
     "pages/shenghuo/miaosha/miaosha",
     "pages/shenghuo/ValuePreference/ValuePreferenceCell/ValuePreferenceCell",
-    "pages/shenghuo/ValuePreference/ValuePreference"
+    "pages/shenghuo/ValuePreference/ValuePreference",
+    "pages/login/login"
   ],
   "window":{
     "navigationBarBackgroundColor": "#302f34",

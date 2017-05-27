@@ -18,3 +18,10 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.btn-area {
+  margin-top: 30px;
+  width: 80%;
+  box-sizing: border-box;
+  font-size: 15px;
+}

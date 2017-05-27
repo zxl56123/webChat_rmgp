@@ -10,6 +10,10 @@ Page({
     list: [],
     newsTagList: []
   },
+  scroll: function (e) {
+
+    // console.log(e)
+  },
   clickOrderTab: function (e) {
     //data = {};
 

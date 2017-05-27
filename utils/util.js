@@ -54,7 +54,9 @@ function RequestManager(url, para, successRes, failRes) {
       if (res.data["code"] == "000000") {
         successRes(res.data);
       } else {
-        failRes("error" + res.data["code"])
+        //failRes("error" + res.data["code"])
+        //failRes(res.data);
+        successRes(res.data);
       }
 
       console.log(url + "      ***********->      " + res.data["mesg"])

@@ -11,10 +11,11 @@ var config = {
     // 下面的地址配合云端 Server 工作
     host,
 
-    // 获取新闻动态
-    GET_HOT_NEWS: `${host}/hotNews/public/getHotNews?accessToken=`,
-    // 获取政务资讯顶部标签
-    newsTagUrl: `${host}/newstag/public/getnewstag`,
+    loginUrl: `${host_iamge}/zyb/public/user/system/login`, /** 登录接口 login */
+    
+    GET_HOT_NEWS: `${host}/hotNews/public/getHotNews?accessToken=`,/** 获取新闻动态 */
+    
+    newsTagUrl: `${host}/newstag/public/getnewstag`, /** 获取政务资讯顶部标签 */
 
     // 测试的请求地址
     requestUrl: `${host}/testRequest`,
@@ -26,6 +27,7 @@ var config = {
     miaoshaUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`, /** 一元夺宝 */
     couponCategoryUrl: `${host_sh}/front/public/search/getCouponCategory`, /** 获取优惠券分类 */
     CouponSearchListUrl: `${host_sh}/front/public/search/getCouponSearchList`, /*好优惠搜索*/
+    addCouponUrl: `${host_sh}/front/public/user/url/addCoupon`, /** 领取优惠券 */
 };
 
 module.exports = config

@@ -38,6 +38,11 @@ Page({
     shownavindex: ''
 
   },
+
+  scroll: function (e) {
+
+    // console.log(e)
+  },
   clickOrderTab: function (e) {
     //data = {};
     var index = parseInt(e.target.dataset.index)
@@ -285,6 +290,71 @@ Page({
       complete: function (res) { wx.hideLoading() },
 
     })
+
+  },
+
+  /** 领取优惠券 */
+  tapAddCoupon: function (e) {
+
+    console.log(e)
+
+    let couponId = e.currentTarget.dataset.couponid
+    let url = config.addCouponUrl
+
+    var userId = "";
+    wx.getStorage({
+      key: 'userId',
+      success: function (res) {
+
+        userId = res.data;
+
+        console.log(res.data)
+
+        if (userId.length > 0) {
+
+          //登录有效
+          var para = {
+            "userId": userId,
+            "couponId": couponId
+          }
+
+          wx.showLoading({ title: '加载中...' })
+
+          util.RequestManager(url, para, function (res, fail) {
+
+            wx.hideLoading()
+
+            if (res["code"] == "000000") {
+
+              wx.showToast({
+                title: '领取成功',
+                icon: 'success',
+                duration: 3000
+              })
+            } else if (res["code"] == "000001") {
+
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            } else {
+              wx.showToast({
+                title: res["mesg"],
+                icon: 'warn',
+                duration: 3000
+              })
+            }
+
+          })
+
+        } else {
+          //登录无效 - 跳转到登录界面
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
+
 
   },
 

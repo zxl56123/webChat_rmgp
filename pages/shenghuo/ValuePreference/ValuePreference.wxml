@@ -32,7 +32,7 @@
       <view bindtap="tapQuanchengCell" data-index="{{index}}">{{item}}</view>
     </view>
   </view>
-  <view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>
+  <!--<view class="fullbg {{isfull ?'fullopacity':''}}" bindtap="hidebg"></view>-->
 
 
   <block wx:for="{{couponCategoryList}}" wx:for-item="item" wx:key="key">
