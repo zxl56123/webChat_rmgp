@@ -69,8 +69,10 @@
 }
 
 .center-title-2-container-2 {
+  position: relative;
   font-size: 12px;
-  padding-bottom: 0;
+  top: 10px;
+  left: 8px;
 }
 
 .center-title-3-container {
