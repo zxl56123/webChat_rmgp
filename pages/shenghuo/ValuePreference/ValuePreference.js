@@ -2,6 +2,10 @@ const config = require('../../../config')
 var util = require('../../../utils/util.js')
 var locationManager = require('../../../utils/locationManager.js')
 
+// 引入SDK核心类 - 腾讯LBS服务（微信小程序原生LBS能力的最佳拍档）
+var QQMapWX = require('../../../lbs/qqmap-wx-jssdk.js');
+var qqmapsdk;
+
 let TENCENT_KEY = "AJPBZ-S6MRU-NFIVK-4BH5A-IZA57-OKB24"
 
 var selectedCategoryName = ""; /** 当前选中的分类名称 */
@@ -12,6 +16,8 @@ var dic = new Array();
 
 var longt = ""
 var lati = ""
+
+
 
 Page({
 
@@ -69,26 +75,56 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
+
+    var that = this;
+
+    that.setData({
       priceAndDistance: ['离我最近', '面额最高'],
       quancheng: ['1千米', '3千米', '5千米', '10千米', '全城']
     })
 
+    // 实例化API核心类
+    qqmapsdk = new QQMapWX({
+      key: TENCENT_KEY
+    });
     /** 获取定位 */
     wx.showLoading({ title: '加载中...', })
     util.getLocation((successRes, failRes) => {
       wx.hideLoading()
       console.log(successRes)
       console.log(failRes)
-      // var location = locationManager.gcj02tobd09(successRes.longitude, successRes.latitude)
-      // this.loadCity(location[0], location[1])
+     
+     //赋值
+      longt = successRes.longitude
+      lati = successRes.latitude
 
-      var location = locationManager.wgs2bd(successRes.longitude, successRes.latitude)
-      longt = location[0];
-      lati = location[1];
-      this.loadCity(location[0], location[1])
+      // 调用接口-逆地址解析
+      qqmapsdk.reverseGeocoder({
+        location: {
+          latitude: successRes.latitude,
+          longitude: successRes.longitude
+        },
+        coord_type: 1,//输入的locations的坐标类型，可选值为[1,6]之间的整数，每个数字代表的类型说明： 1 GPS坐标 2 sogou经纬度 3 baidu经纬度 4 mapbar经纬度 5 [默认]腾讯、google、高德坐标 6 sogou墨卡托
+        success: function (res) {
+          console.log(res);
 
-      // this.loadCity(successRes.longitude, successRes.latitude)
+          var city = res.result.address_component.city;
+          that.setData({ localCtiyName: city });
+          console.log(city);
+
+          /** 首次定位成功 -> 网络请求 */
+
+          /** 请求分类类型 */
+          that.requestCouponCategory(that.data.localCtiyName)
+
+        },
+        fail: function (res) {
+          console.log(res);
+        },
+        complete: function (res) {
+          console.log(res);
+        }
+      });
     })
 
   },
@@ -98,59 +134,6 @@ Page({
   //   console.log(failRes)
   // },
 
-  /** 获取定位城市 */
-  loadCity: function (longitude, latitude) {
-    var that = this
-
-    wx.showLoading({ title: '加载中...', })
-
-    console.log('https://api.map.baidu.com/geocoder/v2/?ak=0FuoX30MFf7YMrdS5Wi9GGAcHBblKDuu&callback=?&location=' + latitude + ',' + longitude + '&output=json')
-
-    wx.request({
-
-      // url: 'http://apis.map.qq.com/ws/geocoder/v1/?location=' + latitude + ',' + longitude + '&key=' + TENCENT_KEY,  
-      url: 'https://api.map.baidu.com/geocoder/v2/?ak=0FuoX30MFf7YMrdS5Wi9GGAcHBblKDuu&callback=?&location=' + latitude + ',' + longitude + '&output=json',
-
-      data: {},
-      method: 'GET',
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        // success  
-        console.log(res);
-
-        // that.setData({
-        //   nation: res.data.result.address_component.nation,
-        //   province: res.data.result.address_component.province,
-        //   city: res.data.result.address_component.city,
-        //   district: res.data.result.address_component.district,
-        //   street: res.data.result.address_component.street,
-        //   street_number: res.data.result.address_component.street_number
-        // })
-
-        //console.log(that.data.nation, that.data.province, that.data.city)
-
-        var city = res.data.result.addressComponent.city;
-        that.setData({ localCtiyName: city });
-        console.log(city);
-
-        /** 首次定位成功 -> 网络请求 */
-
-        /** 请求分类类型 */
-        that.requestCouponCategory(that.data.localCtiyName)
-
-
-      },
-      fail: function () {
-        // fail  
-      },
-      complete: function () {
-        // complete  
-        wx.hideLoading()
-      }
-    })
-  },
 
   /** 请求分类 */
   requestCouponCategory: function (cityName) {
