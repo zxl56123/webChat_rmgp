@@ -1,0 +1,22 @@
+/* pages/shenghuo/AllServiceclassify/ServiceDetailInfo/ServiceDetailInfo.wxss */
+
+.ServiceDetailInfo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.ServiceDetailInfo-image {
+  width: 100%;
+  height: 206px;
+
+
+}
+
+.titleName {
+  font-size: 15px;
+
+}

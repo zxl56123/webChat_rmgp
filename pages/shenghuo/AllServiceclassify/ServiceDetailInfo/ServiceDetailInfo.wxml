@@ -1,0 +1,14 @@
+<!--pages/shenghuo/AllServiceclassify/ServiceDetailInfo/ServiceDetailInfo.wxml-->
+<!--<text>pages/shenghuo/AllServiceclassify/ServiceDetailInfo/ServiceDetailInfo.wxml</text>-->
+
+
+<import src="../../../../wxParse/wxParse.wxml"/> 
+
+<view class="ServiceDetailInfo-container">
+<image class="ServiceDetailInfo-image" src="http://m.jointem.com/{{detailDic.serviceContentImgUrl}}"></image>
+    <view class="titleName">{{detailDic.serviceTitle}}</view>
+
+<view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:htmlContentStr.nodes}}"/>
+</view>
+</view>

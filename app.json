@@ -24,6 +24,7 @@
     "pages/shenghuo/AllServiceclassify/SecondaryService/SecondaryService",
     "pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryListCell/ServiceCategoryListCell",
     "pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryList",
+    "pages/shenghuo/AllServiceclassify/ServiceDetailInfo/ServiceDetailInfo",
     
     "pages/login/login"
   ],

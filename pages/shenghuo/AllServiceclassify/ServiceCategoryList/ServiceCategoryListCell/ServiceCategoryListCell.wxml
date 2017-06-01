@@ -2,7 +2,20 @@
 <!--<text>pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryListCell/ServiceCategoryListCell.wxml</text>-->
 
 <template name="ServiceCategoryListCell">
-<image  class="image" src="http://m.jointem.com/{{serviceTitleImgUrl}}"></image>
-<view class="serviceCategoryListCell-container">{{serviceTitle}}</view>
+
+  <view class="serviceCategoryListCell-container" data-id="{{id}}" bindtap="tapServiceCategoryListCell">
+    <view class="left-container">
+      <image class="left-image" src="http://m.jointem.com/{{serviceTitleImgUrl}}"></image>
+    </view>
+    <view class="right-container">
+      <view class="serviceTitle">{{serviceTitle}}</view>
+      <view class="right-bottom-container">
+      <view class="bottomTitle">{{serviceDetailAddress}}</view>
+      
+      </view>
+    </view>
+
+
+  </view>
 
 </template>

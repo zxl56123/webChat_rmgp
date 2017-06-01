@@ -1,7 +1,8 @@
-// pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryList.js
+// pages/shenghuo/AllServiceclassify/ServiceDetailInfo/ServiceDetailInfo.js
 
 const config = require('../../../../config')
 var util = require('../../../../utils/util.js')
+var WxParse = require('../../../../wxParse/wxParse.js');
 
 Page({
 
@@ -9,48 +10,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: []
+
+    detailDic: {}
   },
-  /**点击cell*/
-  tapServiceCategoryListCell: function(e){
-    
-    var that = this;
-    var id = e.currentTarget.dataset.id;
+  /** 去掉转义字符 */
+  excludeSpecial: function (s) {
 
-    let url = '../ServiceDetailInfo/ServiceDetailInfo?id=' + id;
-    wx.navigateTo({
-      url: url,
-    })
+    s = s.replace('"', '').replace(/[\\]/g, '');
 
-
+    return s;
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    var CategoryId = options.CategoryId;
+    var id = options.id;
 
     //网络请求
     var that = this
 
     console.log(options.index)
 
-    let url = config.ServiceSearchListUrl
-    let para = {
-      "pageNum": 1,
-      "pageSize": 20,
-      "position": {},
-      "serviceSecondCategoryId": CategoryId,
-      "serviceAreaName": "云南省 玉溪市"
-    }
+    let url = config.ServiceDetailInfoUrL
+    let para = { "id": id, }
 
     util.RequestManager(url, para, function (res, fail) {
       console.log(res)
-      that.setData({ list: res.data.dataList })
-    })
-  },
+      that.setData({ detailDic: res.data })
 
+      var htmlStr = that.excludeSpecial(res.data.serviceDescription)
+
+      WxParse.wxParse('htmlContentStr', 'html', htmlStr, that, 5);
+    })
+
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
