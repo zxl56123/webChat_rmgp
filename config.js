@@ -28,6 +28,9 @@ var config = {
     couponCategoryUrl: `${host_sh}/front/public/search/getCouponCategory`, /** 获取优惠券分类 */
     CouponSearchListUrl: `${host_sh}/front/public/search/getCouponSearchList`, /*好优惠搜索*/
     addCouponUrl: `${host_sh}/front/public/user/url/addCoupon`, /** 领取优惠券 */
+    ServiceTypeListUrl: `${host_sh}/front/public/door/getServiceTypeList`,/** 分类服务 */
+    ServiceSearchListUrl: `${host_sh}/front/public/search/getServiceSearchList`, /** 好服务搜索 */
+    ServiceDetailInfoUrL: `${host_sh}http://m.jointem.com/front/public/door/viewServiceDetailInfo`, /** 获取服务详情数据 */
 };
 
 module.exports = config

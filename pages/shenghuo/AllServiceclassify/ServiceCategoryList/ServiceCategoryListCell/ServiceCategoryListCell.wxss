@@ -1,0 +1,22 @@
+/* pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryListCell/ServiceCategoryListCell.wxss */
+
+.serviceCategoryListCell-container {
+  background-color: #fff;
+  position: relative;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  margin: 0 5px 0 5px !important;
+  border: none;
+  border-bottom: 1px solid #efefef;
+  display: table;
+  vertical-align: middle;
+  width: 97%;
+  min-height: 98px;
+  padding-left: 95px;
+}
+
+.image {
+  width: 85px;
+  height: 85px;
+
+}

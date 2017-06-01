@@ -12,16 +12,22 @@ Page({
     console.log(index)
 
     switch (index) {
-      case 0:
+      case 0: //领券中心
       wx.navigateTo({
         url: 'ValuePreference/ValuePreference',
       })
       break;
-      case 1:
-      case 2:
-      case 3:
+      case 1: //吃喝玩乐
+      wx.navigateTo({
+        url: 'GoodLife/GoodLife',
+      })
+      case 2: //精选商品
+      wx.navigateTo({
+        url: 'SelectedGoods/SelectedGoods',
+      })
+      case 3: //分类服务
         wx.navigateTo({
-          url: '/pages/logs/logs'
+          url: 'AllServiceclassify/AllServiceclassify'
         })
       break;
 

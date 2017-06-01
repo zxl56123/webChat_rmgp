@@ -16,6 +16,15 @@
     "pages/shenghuo/miaosha/miaosha",
     "pages/shenghuo/ValuePreference/ValuePreferenceCell/ValuePreferenceCell",
     "pages/shenghuo/ValuePreference/ValuePreference",
+    "pages/shenghuo/GoodLife/GoodLife",
+    "pages/shenghuo/SelectedGoods/SelectedGoods",
+    "pages/shenghuo/AllServiceclassify/AllServiceclassifyCell/AllServiceclassifyCell",
+    "pages/shenghuo/AllServiceclassify/HeaderSection/HeaderSection",
+    "pages/shenghuo/AllServiceclassify/AllServiceclassify",
+    "pages/shenghuo/AllServiceclassify/SecondaryService/SecondaryService",
+    "pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryListCell/ServiceCategoryListCell",
+    "pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryList",
+    
     "pages/login/login"
   ],
   "window":{
