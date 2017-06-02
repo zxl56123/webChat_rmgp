@@ -16,6 +16,8 @@
     "pages/shenghuo/miaosha/miaosha",
     "pages/shenghuo/ValuePreference/ValuePreferenceCell/ValuePreferenceCell",
     "pages/shenghuo/ValuePreference/ValuePreference",
+    "pages/shenghuo/GoodLife/GoodLifeCell/GoodLifeCell",
+    "pages/shenghuo/GoodLife/LifeSearchList/LifeSearchList",
     "pages/shenghuo/GoodLife/GoodLife",
     "pages/shenghuo/SelectedGoods/SelectedGoods",
     "pages/shenghuo/AllServiceclassify/AllServiceclassifyCell/AllServiceclassifyCell",

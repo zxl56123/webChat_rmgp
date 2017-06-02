@@ -68,8 +68,36 @@ function RequestManager(url, para, successRes, failRes) {
   })
 }
 
+function convertToStarsArray(stars) {
+  var num = stars.toString().substring(0, 1);
+  var array = [];
+  for (var i = 1; i <= 5; i++) {
+    if (i <= num) {
+      array.push(1);
+    }
+    else {
+      array.push(0);
+    }
+  }
+  return array;
+}
+
+function convertToDistance(dis) {
+  var tempDis = parseFloat(dis)
+
+  if (tempDis < 1000) {
+    return tempDis.toFixed(0) + "m"
+
+  } else {
+    return (tempDis / 1000).toFixed(1) + "km"
+  }
+
+}
+
 module.exports = {
   formatTime: formatTime,
   getLocation: getLocation,
-  RequestManager: RequestManager
+  RequestManager: RequestManager,
+  convertToStarsArray: convertToStarsArray,
+  convertToDistance: convertToDistance
 }

@@ -31,6 +31,9 @@ var config = {
     ServiceTypeListUrl: `${host_sh}/front/public/door/getServiceTypeList`,/** 分类服务 */
     ServiceSearchListUrl: `${host_sh}/front/public/search/getServiceSearchList`, /** 好服务搜索 */
     ServiceDetailInfoUrL: `${host_sh}/front/public/door/viewServiceDetailInfo`, /** 获取服务详情数据 */
+    AdvertCaroucelsUrl: `${host_sh}/front/public/advert/getAdvertCaroucels`, /**吃喝玩乐 - 广告轮播*/
+    ChildCateUrl: `${host_sh}/front/public/common/url/getChildCate`, /** 吃喝玩乐 - 分类 */
+    LifeSearchListUrl: `${host_sh}/front/public/search/getLifeSearchList`, /** 吃喝玩乐 - 条件检索 */
 };
 
 module.exports = config
