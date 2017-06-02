@@ -10,8 +10,9 @@
     <view class="right-container">
       <view class="serviceTitle">{{serviceTitle}}</view>
       <view class="right-bottom-container">
-      <view class="bottomTitle">{{serviceDetailAddress}}</view>
-      
+        <view class="bottomTitle">{{serviceDistrict + serviceDetailAddress}}</view>
+        <image class="vip" src="../img/vip.png"></image>
+        <image class="call" src="../img/call.png" data-phone-num="{{serviceTel}}" bindtap="tapServiceCategoryListCellCall"></image>
       </view>
     </view>
 

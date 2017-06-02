@@ -11,6 +11,14 @@ Page({
   data: {
     list: []
   },
+  /** 点击cell拨打电话 */
+  tapServiceCategoryListCellCall: function(e) {
+    var phoneNum = e.currentTarget.dataset.phoneNum;
+    wx.makePhoneCall({
+      phoneNumber: phoneNum,
+    })
+
+  },
   /**点击cell*/
   tapServiceCategoryListCell: function(e){
     
