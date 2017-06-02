@@ -13,6 +13,26 @@ Page({
 
     detailDic: {}
   },
+  wxParseTagATap: function(e) {
+    
+    var str = e.currentTarget.dataset.src;
+    
+    var strAr = new Array(); //定义一数组 
+    strAr = str.split(":"); //字符分割 
+
+    console.log(strAr)
+
+    if (strAr[0] == "tel"){
+
+      let phoneNum = strAr[1]
+      //拨打电话
+      wx.makePhoneCall({
+        phoneNumber: phoneNum,
+      })
+    }
+
+    
+  },
   /** 去掉转义字符 */
   excludeSpecial: function (s) {
 
