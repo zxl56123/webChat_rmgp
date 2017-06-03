@@ -12,7 +12,7 @@
   <image class="search_lb" src="/images/icon/search_lb.png"></image>
 </view>
 
-<scroll-view class="scroll-container" scroll-y="true">
+<scroll-view class="scroll-Goods-list-container" scroll-y="true">
 
   <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
 
