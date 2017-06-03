@@ -36,6 +36,7 @@ var config = {
     LifeSearchListUrl: `${host_sh}/front/public/search/getLifeSearchList`, /** 吃喝玩乐 - 条件检索 */
     HighestDiscountUrl: `${host_sh}/front/public/getHighestDiscount`, /** 吃喝玩乐 - 条件检索 - 对应折扣查询 */
     PrdSearchListUrl: `${host_sh}/front/public/search/getPrdSearchList`, /** 好商品搜索 */
+    PrdFirstCategoryUrl: `${host_sh}/front/public/search/getPrdFirstCategory`, /** 获取好商品所有一级分类 */
 };
 
 module.exports = config

@@ -3,6 +3,15 @@
 
 <import src="SelectedGoodsGridCell/SelectedGoodsGridCell.wxml" />
 
+<view class="top-container">
+  <scroll-view class="scroll-view_container selected" scroll-x="true" bindscroll="scroll">
+    <block wx:for="{{prdFirstCategoryList}}" wx:for-item="item" wx:key="key">
+      <view class="flex-sub-box-5 {{ currentTabIndex == item.id ? 'active' : '' }}" bindtap="clickOrderTab" data-index="{{item.id}}">{{item.cateName}}</view>
+    </block>
+  </scroll-view>
+  <image class="search_lb" src="/images/icon/search_lb.png"></image>
+</view>
+
 <scroll-view class="scroll-container" scroll-y="true">
 
   <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
