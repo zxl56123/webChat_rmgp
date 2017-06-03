@@ -12,21 +12,22 @@
 }
 
 .left-container {
-  width: 90px;
-  height: 90px;
+  width: 180rpx;
+  height: 180rpx;
 }
 
 .left-image {
   margin-top: 8px;
   margin-left: 8px;
-  width: 85px;
-  height: 85px;
+  width: 170rpx;
+  height: 170rpx;
   border-radius: 4px;
 }
 
 .right-container {
   margin: 16px 12px 8px 12px;
   display: flex;
+  width: 570rpx;
   flex-direction: column;
 }
 
@@ -45,16 +46,15 @@
 .address {
   position: absolute;
   font-size: 12px;
-  color: #aaaaaa;
+  color: #aaa;
 }
 
 .distance {
   position: absolute;
-  right: 13px;
+  right: 40rpx;
   width: 60rpx;
   font-size: 12px;
   color: gray;
-
   border-radius: 4px;
 }
 
@@ -66,11 +66,19 @@
 }
 
 .bottomTitle {
-  
   font-size: 12px;
   border: none;
+  width: 340rpx;
   max-width: 340rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  display: block;
+  word-break: keep-all; /* 不换行 */
+}
+
+.maxDiscountPrice {
+  color: red;
+  padding: 0px 2px;
+  font-weight: 500;
 }

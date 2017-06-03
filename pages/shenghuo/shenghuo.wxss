@@ -1,5 +1,6 @@
 @import "../index/GridIconCell/GridIconCell.wxss";
 @import "ImageCell/ImageCell.wxss";
+@import "GoodLife/GoodLifeCell/GoodLifeCell.wxss";
 
 .iconList-container {
   flex-direction: row;

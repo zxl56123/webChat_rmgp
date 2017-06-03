@@ -2,7 +2,7 @@
 
 const config = require('../../../config')
 var util = require('../../../utils/util.js')
-var locationManager = require('../../../utils/locationManager.js')
+// var locationManager = require('../../../utils/locationManager.js')
 
 // 引入SDK核心类 - 腾讯LBS服务（微信小程序原生LBS能力的最佳拍档）
 var QQMapWX = require('../../../lbs/qqmap-wx-jssdk.js');
@@ -170,10 +170,6 @@ Page({
     var that = this;
     let url = config.LifeSearchListUrl
 
-    var that = this
-
-    wx.showLoading({ title: '加载中...', })
-
     var distanceStr = null
 
     if (that.data.quanchengSelectedName === "1千米") {
@@ -211,8 +207,12 @@ Page({
 
       var tempAr = [];
 
+      var doorIdAr = [];
       for (var i = 0; i < res.data.dataList.length; i++) {
         var model = res.data.dataList[i];
+
+        doorIdAr.push(model["doorId"]); /** doorId集合 查询优惠价格时需要 */
+
         model["starAr"] = util.convertToStarsArray(model["star"])
         model["distance"] = util.convertToDistance(model["distance"])
         tempAr.push(model)
@@ -225,8 +225,43 @@ Page({
         //上拉加载
         that.setData({ LifeSearchList: that.data.LifeSearchList.concat(tempAr) })
       }
+
+      that.requesHighestDiscount(doorIdAr)
     })
 
+  },
+  requesHighestDiscount: function (doorIdAr) {
+
+    var that = this;
+    let url = config.HighestDiscountUrl
+
+    var para = doorIdAr
+
+    wx.showLoading({ title: '加载中...' })
+
+    util.RequestManager(url, para, function (res, fail) {
+
+      wx.hideLoading()
+
+
+      var tempAr = that.data.LifeSearchList;
+
+      for (var i = 0; i < tempAr.length; i++) {
+        var model = tempAr[i];
+        for (var j = 0; j < res.data.length; j++) {
+          var discountModel = res.data[j];
+          if (discountModel["doorId"] = model["doorId"]) {
+            //赋值
+            tempAr[i]["maxDiscountPrice"] = discountModel["maxDiscountPrice"];
+            
+          }
+
+        }
+      }
+
+      that.setData({ LifeSearchList: tempAr })
+
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

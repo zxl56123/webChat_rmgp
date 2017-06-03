@@ -1,2 +1,11 @@
 <!--pages/shenghuo/SelectedGoods/SelectedGoods.wxml-->
-<text>pages/shenghuo/SelectedGoods/SelectedGoods.wxml</text>
+<!--<text>pages/shenghuo/SelectedGoods/SelectedGoods.wxml</text>-->
+
+ <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
+
+    <block wx:for="{{advertCaroucelsAr}}" wx:for-item="item" wx:for-index="index" wx:key="key">
+      <swiper-item>
+        <image class="caroucels" src="http://m.jointem.com/{{item.imageUrl}}" data-postId="{{id}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>

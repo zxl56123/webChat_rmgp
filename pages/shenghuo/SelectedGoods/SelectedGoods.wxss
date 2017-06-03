@@ -1,1 +1,6 @@
 /* pages/shenghuo/SelectedGoods/SelectedGoods.wxss */
+
+.caroucels {
+  width: 100%;
+  height: 300rpx;
+}

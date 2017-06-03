@@ -21,7 +21,7 @@ var config = {
     requestUrl: `${host}/testRequest`,
 
     //生活
-    
+    RecommendDoorListUrl: `${host_sh}/front/public/advert/getAdvertRecommendDoorList`, /** 获取便民首页优选推荐店铺列表 */
     ttPrizeUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`,/** 天天有奖 */
     onePrizeUrl: `${host_sh}/front/public/oyb/getServantPrdList`, /** 一元夺宝 */
     miaoshaUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`, /** 一元夺宝 */
@@ -34,6 +34,7 @@ var config = {
     AdvertCaroucelsUrl: `${host_sh}/front/public/advert/getAdvertCaroucels`, /**吃喝玩乐 - 广告轮播*/
     ChildCateUrl: `${host_sh}/front/public/common/url/getChildCate`, /** 吃喝玩乐 - 分类 */
     LifeSearchListUrl: `${host_sh}/front/public/search/getLifeSearchList`, /** 吃喝玩乐 - 条件检索 */
+    HighestDiscountUrl: `${host_sh}/front/public/getHighestDiscount`, /** 吃喝玩乐 - 条件检索 - 对应折扣查询 */
 };
 
 module.exports = config
