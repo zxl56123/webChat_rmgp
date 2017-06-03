@@ -19,6 +19,7 @@
     "pages/shenghuo/GoodLife/GoodLifeCell/GoodLifeCell",
     "pages/shenghuo/GoodLife/LifeSearchList/LifeSearchList",
     "pages/shenghuo/GoodLife/GoodLife",
+    "pages/shenghuo/SelectedGoods/SelectedGoodsGridCell/SelectedGoodsGridCell",
     "pages/shenghuo/SelectedGoods/SelectedGoods",
     "pages/shenghuo/AllServiceclassify/AllServiceclassifyCell/AllServiceclassifyCell",
     "pages/shenghuo/AllServiceclassify/HeaderSection/HeaderSection",

@@ -35,6 +35,7 @@ var config = {
     ChildCateUrl: `${host_sh}/front/public/common/url/getChildCate`, /** 吃喝玩乐 - 分类 */
     LifeSearchListUrl: `${host_sh}/front/public/search/getLifeSearchList`, /** 吃喝玩乐 - 条件检索 */
     HighestDiscountUrl: `${host_sh}/front/public/getHighestDiscount`, /** 吃喝玩乐 - 条件检索 - 对应折扣查询 */
+    PrdSearchListUrl: `${host_sh}/front/public/search/getPrdSearchList`, /** 好商品搜索 */
 };
 
 module.exports = config

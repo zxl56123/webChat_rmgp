@@ -1,7 +1,11 @@
 <!--pages/shenghuo/SelectedGoods/SelectedGoods.wxml-->
 <!--<text>pages/shenghuo/SelectedGoods/SelectedGoods.wxml</text>-->
 
- <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
+<import src="SelectedGoodsGridCell/SelectedGoodsGridCell.wxml" />
+
+<scroll-view class="scroll-container" scroll-y="true">
+
+  <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
 
     <block wx:for="{{advertCaroucelsAr}}" wx:for-item="item" wx:for-index="index" wx:key="key">
       <swiper-item>
@@ -9,3 +13,11 @@
       </swiper-item>
     </block>
   </swiper>
+
+  <view class="selectGoods-list">
+    <block wx:for="{{prdSearchList}}" wx:for-item="item" wx:for-index="index" wx:key="key">
+      <template is="SelectedGoodsGridCell" data="{{...item}}"></template>
+    </block>
+  </view>
+
+</scroll-view>
