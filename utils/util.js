@@ -93,11 +93,36 @@ function convertToDistance(dis) {
   }
 
 }
+/** 判断用户名是否正确 */
+function verificationUserName(userName){
+  // 账号验证规则
+  //    1：以 1 开头
+  //    2：11位数字
+  
+  if (userName.substring(0, 1) == "1" && userName.length == 11)
+  {
+    return true;
+  }
+
+  return false;
+  
+}
+/** 判断用户密码是否正确 */
+function verificationPwd(pwd){
+  
+  //var regPwd = new RegExp('^[a-zA-Z0-9 ]{6,20}$', 'g');
+  var regPwd = new RegExp('^\\S{6,20}$', 'g');
+  var result = regPwd.exec(pwd);
+  return result;
+
+}
 
 module.exports = {
   formatTime: formatTime,
   getLocation: getLocation,
   RequestManager: RequestManager,
   convertToStarsArray: convertToStarsArray,
-  convertToDistance: convertToDistance
+  convertToDistance: convertToDistance,
+  verificationUserName: verificationUserName,
+  verificationPwd: verificationPwd
 }
