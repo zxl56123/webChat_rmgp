@@ -22,7 +22,7 @@
     </view>
     <view class="cell-right-container">
       <text class="cell-right-container-1">剩余{{num}}</text>
-      <text class="{{couponType == 1 ? 'cell-right-container-2-brown' : 'cell-right-container-2-blue'}}"  data-couponId="{{couponId}}" bindtap="tapAddCoupon">立即领取</text>
+      <text class="{{couponType == 1 ? 'cell-right-container-2-brown' : 'cell-right-container-2-blue'}}"  data-couponId="{{couponId}}" bindtap="tapAddCoupon">{{alreadyReceived === "ok" ? "去使用" : "立即领取"}}</text>
     </view>
   </view>
 </template>

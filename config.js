@@ -27,6 +27,7 @@ var config = {
     miaoshaUrl: `${host_sh}/front/public/activity/getActivityListByTypeId`, /** 一元夺宝 */
     couponCategoryUrl: `${host_sh}/front/public/search/getCouponCategory`, /** 获取优惠券分类 */
     CouponSearchListUrl: `${host_sh}/front/public/search/getCouponSearchList`, /*好优惠搜索*/
+    receiveCouponUrl: `${host_sh}/front/public/user/url/receiveCoupon`, /** 筛选出用户领取过的未使用的优惠券 */
     addCouponUrl: `${host_sh}/front/public/user/url/addCoupon`, /** 领取优惠券 */
     ServiceTypeListUrl: `${host_sh}/front/public/door/getServiceTypeList`,/** 分类服务 */
     ServiceSearchListUrl: `${host_sh}/front/public/search/getServiceSearchList`, /** 好服务搜索 */

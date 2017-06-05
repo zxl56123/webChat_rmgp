@@ -250,7 +250,7 @@ Page({
         var model = tempAr[i];
         for (var j = 0; j < res.data.length; j++) {
           var discountModel = res.data[j];
-          if (discountModel["doorId"] = model["doorId"]) {
+          if (discountModel["doorId"] == model["doorId"]) {
             //赋值
             tempAr[i]["maxDiscountPrice"] = discountModel["maxDiscountPrice"];
             

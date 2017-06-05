@@ -1,3 +1,5 @@
+var app = getApp()
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -51,15 +53,74 @@ function RequestManager(url, para, successRes, failRes) {
     dataType: '',
     success: function (res) {
 
-      if (res.data["code"] == "000000") {
-        successRes(res.data);
+      var dic = res.data;
+
+      if (dic.mesg.length) {
+        dic["msg"] = dic["mesg"];
+      } else if (dic.msg.length) {
+        dic["mesg"] = dic["msg"];
       } else {
-        //failRes("error" + res.data["code"])
-        //failRes(res.data);
-        successRes(res.data);
+        dic["msg"] = ""
+        dic["mesg"] = ""
       }
 
-      console.log(url + "      ***********->      " + res.data["mesg"])
+      if (dic["code"] == "000000") {
+        successRes(dic);
+      } else {
+        //failRes("error" + dic.code)
+        //failRes(dic);
+        successRes(dic);
+      }
+
+      console.log(url + "      ***********->      " + dic["msg"])
+    },
+    fail: function (error) {
+      failRes(error)
+      console.log(url + "      ***********->      " + error)
+    }
+  })
+}
+
+function RequestManagerWithToken(url, token, para, successRes, failRes) {
+  wx.request({
+    url: url,
+    data: para,
+    method: 'POST',
+    header: {
+      'content-type': 'application/json',
+      'token': token 
+    },
+    dataType: '',
+    success: function (res) {
+
+      var dic = res.data;
+
+      if (dic.mesg.length) {
+        dic["msg"] = dic["mesg"];
+      } else if (dic.msg.length) {
+        dic["mesg"] = dic["msg"];
+      } else {
+        dic["msg"] = ""
+        dic["mesg"] = ""
+      }
+
+      if (dic.code == "000000") {
+        
+      } else if (dic.code == app.globalData.token_expired || dic.code == app.globalData.token_invalid){
+        //failRes("error" + dic.code)
+        //failRes(dic);
+
+        //同步清理本地数据缓存
+        wx.clearStorageSync()
+
+      }else {
+
+
+      }
+
+      successRes(dic);
+
+      console.log(url + "      ***********->      " + dic["msg"])
     },
     fail: function (error) {
       failRes(error)
@@ -94,22 +155,21 @@ function convertToDistance(dis) {
 
 }
 /** 判断用户名是否正确 */
-function verificationUserName(userName){
+function verificationUserName(userName) {
   // 账号验证规则
   //    1：以 1 开头
   //    2：11位数字
-  
-  if (userName.substring(0, 1) == "1" && userName.length == 11)
-  {
+
+  if (userName.substring(0, 1) == "1" && userName.length == 11) {
     return true;
   }
 
   return false;
-  
+
 }
 /** 判断用户密码是否正确 */
-function verificationPwd(pwd){
-  
+function verificationPwd(pwd) {
+
   //var regPwd = new RegExp('^[a-zA-Z0-9 ]{6,20}$', 'g');
   var regPwd = new RegExp('^\\S{6,20}$', 'g');
   var result = regPwd.exec(pwd);
@@ -121,6 +181,7 @@ module.exports = {
   formatTime: formatTime,
   getLocation: getLocation,
   RequestManager: RequestManager,
+  RequestManagerWithToken: RequestManagerWithToken,
   convertToStarsArray: convertToStarsArray,
   convertToDistance: convertToDistance,
   verificationUserName: verificationUserName,

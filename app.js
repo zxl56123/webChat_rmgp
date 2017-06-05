@@ -25,6 +25,9 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    res_success: "000000", /** 网络请求成功 */
+    token_expired: "400011", /** token 过期 */
+    token_invalid: "400012" /** token 无效 */
   }
 })

@@ -1,3 +1,4 @@
+var app = getApp()
 const config = require('../../../config')
 var util = require('../../../utils/util.js')
 var locationManager = require('../../../utils/locationManager.js')
@@ -93,8 +94,8 @@ Page({
       wx.hideLoading()
       console.log(successRes)
       console.log(failRes)
-     
-     //赋值
+
+      //赋值
       longt = successRes.longitude
       lati = successRes.latitude
 
@@ -268,9 +269,81 @@ Page({
 
         console.log(that.data.couponSearchList)
 
+
+        var couponIdAr = [];
+        for (var i = 0; i < res.data.data.dataList.length; i++) {
+          var model = res.data.data.dataList[i];
+          couponIdAr.push(model["couponId"])
+        }
+
+        /** 网络请求 - 筛选出用户领取过的未使用的优惠券 */
+        that.requestReceiveCouponUrl(couponIdAr)
+
       },
       fail: function (res) { },
       complete: function (res) { wx.hideLoading() },
+
+    })
+
+  },
+  /** 筛选出用户领取过的未使用的优惠券 （已领取，未使用）*/
+  requestReceiveCouponUrl: function (couponIdAr) {
+    var that = this;
+    let url = config.receiveCouponUrl
+
+    var userId = wx.getStorageSync('userId') //同步获取指定key对应的内容
+    if (!userId) {
+      // //登录无效 - 跳转到登录界面
+      // wx.navigateTo({
+      //   url: '/pages/login/login',
+      // })
+      return;
+    }
+
+    var token = wx.getStorageSync('token') //同步获取指定key对应的内容
+    if (!token) {
+      // //登录无效 - 跳转到登录界面
+      // wx.navigateTo({
+      //   url: '/pages/login/login',
+      // })
+      return;
+    }
+
+    var para = {
+      "userId": userId,
+      "couponIds": couponIdAr
+    }
+
+    wx.showLoading({ title: '加载中...' })
+
+    util.RequestManagerWithToken(url, token, para, function (res, fail) {
+
+      wx.hideLoading()
+
+      if (res.code == app.globalData.res_success) {
+
+        var index = that.data.currentTabIndex;
+        var tempAr = that.data.couponSearchList[index];
+
+        for (var i = 0; i < tempAr.length; i++) {
+          var model = tempAr[i];
+          for (var j = 0; j < res.data.length; j++) {
+            var receivedId = res.data[j];
+            if (receivedId == model["couponId"]) {
+              //赋值 - 表示该优惠券已经领取
+              tempAr[i]["alreadyReceived"] = "ok";
+            }
+          }
+        }
+
+        var newData = that.data.couponSearchList;
+        newData[index] = tempAr;
+
+        that.setData({ couponSearchList: newData })
+      } else {
+
+
+      }
 
     })
 
@@ -279,64 +352,64 @@ Page({
   /** 领取优惠券 */
   tapAddCoupon: function (e) {
 
-    console.log(e)
+    var that = this;
 
     let couponId = e.currentTarget.dataset.couponid
+
     let url = config.addCouponUrl
 
-    var userId = "";
-    wx.getStorage({
-      key: 'userId',
-      success: function (res) {
+    var userId = wx.getStorageSync('userId') //同步获取指定key对应的内容
+    if (!userId) {
+      //登录无效 - 跳转到登录界面
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return;
+    }
 
-        userId = res.data;
+    var token = wx.getStorageSync('token') //同步获取指定key对应的内容
+    if (!token) {
+      //登录无效 - 跳转到登录界面
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+      return;
+    }
 
-        console.log(res.data)
+    var para = {
+      "userId": userId,
+      "couponId": couponId
+    }
 
-        if (userId.length > 0) {
+    wx.showLoading({ title: '加载中...' })
 
-          //登录有效
-          var para = {
-            "userId": userId,
-            "couponId": couponId
-          }
+    util.RequestManagerWithToken(url, token, para, function (res, fail) {
 
-          wx.showLoading({ title: '加载中...' })
+      wx.hideLoading()
 
-          util.RequestManager(url, para, function (res, fail) {
+      if (res.code == app.globalData.res_success) {
 
-            wx.hideLoading()
+        wx.showToast({
+          title: '领取成功',
+          icon: 'success',
+          duration: 3000
+        })
+      } else if (res.code == app.globalData.token_expired || res.code == app.globalData.token_invalid) {
+        wx.navigateTo({
+          url: '/pages/login/login',
+        })
+      } else {
+        wx.showToast({
+          title: res["mesg"],
+          icon: 'warn',
+          duration: 3000
 
-            if (res["code"] == "000000") {
-
-              wx.showToast({
-                title: '领取成功',
-                icon: 'success',
-                duration: 3000
-              })
-            } else if (res["code"] == "000001") {
-
-              wx.navigateTo({
-                url: '/pages/login/login',
-              })
-            } else {
-              wx.showToast({
-                title: res["mesg"],
-                icon: 'warn',
-                duration: 3000
-              })
-            }
-
-          })
-
-        } else {
-          //登录无效 - 跳转到登录界面
-          wx.navigateTo({
-            url: '/pages/login/login',
-          })
-        }
+        })
       }
     })
+  },
+  /** 获取用户优惠券信息 */
+  requestUserCouponInfo: function (userCouponId) {
 
 
   },
