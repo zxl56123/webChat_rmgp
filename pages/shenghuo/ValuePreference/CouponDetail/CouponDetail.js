@@ -15,7 +15,25 @@ Page({
     couponInfo: {}
 
   },
+  /** 点击地图导航 */
+  tapDitu: function(e){
+    var companyInfo = e.currentTarget.dataset.companyinfo;
+    wx.openLocation({
+      latitude: Number(companyInfo.lattitude),
+      longitude: Number(companyInfo.longitude),
+      scale: '18', //缩放比例，范围5~18，默认为18
+      name: companyInfo.companyName,
+      address: companyInfo.address,
+    })
 
+  },
+  /** 点击拨打电话 */
+  tapPhone: function(e){
+    let phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

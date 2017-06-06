@@ -25,9 +25,9 @@
   <view class="spaceSeparateView"></view>
   <view class="middle-container">
     <view class="address-and-call">
-      <image class="ditu-img" src="/images/icon/daoh.png"></image>
-      <text class="address">{{couponDetail.companyInfo.address}}</text>
-      <image class="phone" src="/images/icon/call.png"></image>
+      <image class="ditu-img" src="/images/icon/daoh.png" data-companyInfo="{{couponDetail.companyInfo}}" bindtap="tapDitu" ></image>
+      <text class="address" data-companyInfo="{{couponDetail.companyInfo}}" bindtap="tapDitu">{{couponDetail.companyInfo.address}}</text>
+      <image class="phone" src="/images/icon/call.png" data-phone="{{couponDetail.companyInfo.phone}}" bindtap="tapPhone"></image>
     </view>
     <view class="coupon-statue">
       <view class="coupon-msg">消费券信息</view>
