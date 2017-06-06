@@ -81,7 +81,17 @@ function RequestManager(url, para, successRes, failRes) {
   })
 }
 
-function RequestManagerWithToken(url, token, para, successRes, failRes) {
+function RequestManagerWithToken(url, para, successRes, failRes) {
+  
+  var token = wx.getStorageSync('token') //同步获取指定key对应的内容
+  if (!token) {
+    // //登录无效 - 跳转到登录界面
+    // wx.navigateTo({
+    //   url: '/pages/login/login',
+    // })
+    return;
+  }
+
   wx.request({
     url: url,
     data: para,

@@ -29,6 +29,9 @@ var config = {
     CouponSearchListUrl: `${host_sh}/front/public/search/getCouponSearchList`, /*好优惠搜索*/
     receiveCouponUrl: `${host_sh}/front/public/user/url/receiveCoupon`, /** 筛选出用户领取过的未使用的优惠券 */
     addCouponUrl: `${host_sh}/front/public/user/url/addCoupon`, /** 领取优惠券 */
+    CouponDetailUrl: `${host_sh}/front/public/getCouponDetail`, /** 获取优惠券详情 */
+    UserCouponIdUrl: `${host_sh}/front/public/user/getUserCouponId`, /** 获取用户优惠券表id */
+    UserCouponInfoUrl: `${host_sh}/front/public/user/url/getUserCouponInfo`, /** 获取用户优惠券信息 */
     ServiceTypeListUrl: `${host_sh}/front/public/door/getServiceTypeList`,/** 分类服务 */
     ServiceSearchListUrl: `${host_sh}/front/public/search/getServiceSearchList`, /** 好服务搜索 */
     ServiceDetailInfoUrL: `${host_sh}/front/public/door/viewServiceDetailInfo`, /** 获取服务详情数据 */

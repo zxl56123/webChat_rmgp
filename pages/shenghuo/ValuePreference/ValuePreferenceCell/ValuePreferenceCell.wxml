@@ -22,7 +22,14 @@
     </view>
     <view class="cell-right-container">
       <text class="cell-right-container-1">剩余{{num}}</text>
-      <text class="{{couponType == 1 ? 'cell-right-container-2-brown' : 'cell-right-container-2-blue'}}"  data-couponId="{{couponId}}" bindtap="tapAddCoupon">{{alreadyReceived === "ok" ? "去使用" : "立即领取"}}</text>
+
+      <block wx:if="{{alreadyReceived == 'ok' }}">
+        <text class="{{couponType == 1 ? 'cell-right-container-2-daodian-use' : 'cell-right-container-2-wangdian-use'}}" data-couponId="{{couponId}}" bindtap="useCoupon">去使用</text>
+      </block>
+      <block wx:else>
+        <text class="{{couponType == 1 ? 'cell-right-container-2-brown' : 'cell-right-container-2-blue'}}" data-couponId="{{couponId}}" bindtap="tapAddCoupon"> 立即领取</text>
+      </block>
+
     </view>
   </view>
 </template>

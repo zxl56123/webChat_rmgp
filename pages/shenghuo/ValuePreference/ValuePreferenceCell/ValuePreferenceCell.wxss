@@ -11,7 +11,6 @@
   margin: 0px 0px 5px 0px;
   position: relative;
   /*background-image: url(../../../iamges/shenghuo/lingquan/quan04.png);*//*background-image: url(http://m.jointem.com/lqz13577759356/img/20170506/1494033602952865.jpg);*/
-  
 }
 
 .backgroundImg {
@@ -111,6 +110,8 @@
   color: #fff;
 }
 
+/** 立即领取 - （类型：到店使用） */
+
 .cell-right-container-2-brown {
   color: #b9995a;
   left: 50%;
@@ -124,6 +125,8 @@
   text-align: center;
 }
 
+/** 立即领取 - （类型：网店使用） */
+
 .cell-right-container-2-blue {
   color: #64b3f8;
   left: 50%;
@@ -132,6 +135,36 @@
   border-radius: 20px;
   border-width: 2.5px;
   background-color: #fff;
+  border: solid 2px #4a9ef3;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/** 去使用 - 到店使用*/
+
+.cell-right-container-2-daodian-use {
+  color: #b9995a;
+  left: 50%;
+  width: 70px;
+  font-size: 12px;
+  border-radius: 20px;
+  border-width: 2.5px;
+  background-color: #fbec4f;
+  border: solid 2px #a38140;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/** 去使用 - 网店使用*/
+
+.cell-right-container-2-wangdian-use {
+  color: #64b3f8;
+  left: 50%;
+  width: 70px;
+  font-size: 12px;
+  border-radius: 20px;
+  border-width: 2.5px;
+  background-color: #fbec4f;
   border: solid 2px #4a9ef3;
   margin-top: 12px;
   text-align: center;

@@ -316,7 +316,7 @@ Page({
 
     wx.showLoading({ title: '加载中...' })
 
-    util.RequestManagerWithToken(url, token, para, function (res, fail) {
+    util.RequestManagerWithToken(url, para, function (res, fail) {
 
       wx.hideLoading()
 
@@ -367,15 +367,6 @@ Page({
       return;
     }
 
-    var token = wx.getStorageSync('token') //同步获取指定key对应的内容
-    if (!token) {
-      //登录无效 - 跳转到登录界面
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-      return;
-    }
-
     var para = {
       "userId": userId,
       "couponId": couponId
@@ -383,7 +374,7 @@ Page({
 
     wx.showLoading({ title: '加载中...' })
 
-    util.RequestManagerWithToken(url, token, para, function (res, fail) {
+    util.RequestManagerWithToken(url, para, function (res, fail) {
 
       wx.hideLoading()
 
@@ -408,6 +399,17 @@ Page({
       }
     })
   },
+  /** 去使用优惠券 */
+  useCoupon: function(e){
+    let couponId = e.currentTarget.dataset.couponid
+    let url = "CouponDetail/CouponDetail?couponId=" + couponId
+    
+    wx.navigateTo({
+      url: url,
+    })
+
+  },
+
   /** 获取用户优惠券信息 */
   requestUserCouponInfo: function (userCouponId) {
 
