@@ -12,6 +12,6 @@
   </view>
 
   <view class="btn-area">
-        <button type="primary" bindtap="tapBtnLogin">登录</button>
+        <button class="btn" type="default" style="background:#0164a6; color:white" bindtap="tapBtnLogin">登录</button>
       </view>
 </view>

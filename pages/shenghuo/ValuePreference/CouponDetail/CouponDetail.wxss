@@ -79,7 +79,7 @@
 }
 
 .center-title {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: bold;
   color: #343434;
 }
@@ -159,9 +159,16 @@
   color: #0164a6;
 }
 
-.qr-image {
-  width: 200rpx;
-  height: 200rpx;
+.qr-view-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 420rpx;
+}
+
+.qr-view-container > canvas {
+  width: 420rpx;
+  height: 420rpx;
 }
 
 .qr-code-text {

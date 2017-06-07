@@ -35,13 +35,13 @@
       <view class="statue">{{couponInfo.status == 0 ? "未使用":(couponInfo.status == 1 ?"已使用":(couponInfo.status == 2 ? "已过期":(couponInfo.status == 3 ? "已删除":(couponInfo.status == 4 ? "已锁定":"" )) ) )}}</view>
     </view>
     <view class="qr-view-container">
-      <image class="qr-image" src="src"></image>
+      <canvas canvas-id="qrcode" />
     </view>
     <text class="qr-code-text">{{"消费码: " + couponInfo.couponCode}}</text>
   </view>
   <view class="spaceSeparateView"></view>
   <view class="bottom-container">
-    <view class="common-text">使用期限: {{couponDetail.startTime + " —— " + couponDetail.endTime}}</view>
+    <view class="common-text">使用期限:{{" " + couponDetail.startTime + " —— " + couponDetail.endTime}}</view>
     <view class="common-text">使用说明:</view>
     <view class="common-text">{{couponDetail.explain}}</view>
   </view>

@@ -4,23 +4,22 @@
 <!--index.wxml-->
 <view>
   <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
-    <swiper-item>
-      <image id="7" src="/images/carrousels/lunbo_01.png" data-postId="1"></image>
-    </swiper-item>
-    <swiper-item>
-      <image src="/images/carrousels/lunbo_02.png" data-postId="2"></image>
-    </swiper-item>
+    <block wx:for="{{carrouselsAr}}" wx:for-item="item" wx:for-index="index" wx:key="key">
+      <swiper-item>
+        <image id="7" src="http://gov.jointem.com/{{item.adImage}}"></image>
+      </swiper-item>
+    </block>
   </swiper>
   <view class="iconList-container">
     <block wx:for="{{iconList}}" wx:for-item="item" wx:for-index="idx" wx:key="key">
-      <view class="iconList-container-block" catchtap="tapGridCell" data-icon-id="{{idx}}" >
+      <view class="iconList-container-block" catchtap="tapGridCell" data-icon-id="{{idx}}">
         <template is="GridIconCell" data="{{...item}}"></template>
       </view>
     </block>
   </view>
   <view class="spaceSeparateView"></view>
   <view class="yaowen-container">
-      <text class="yaowen">要闻</text>
+    <text class="yaowen">要闻</text>
   </view>
   <block wx:for="{{list}}" wx:for-item="item" wx:key="key">
     <view class="hotNewsList-container" catchtap="tapHotNewsCell">

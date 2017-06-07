@@ -89,21 +89,35 @@ Page({
       wx.hideLoading()
 
       if (res.code == "000000") {
-        //成功
+        //成功 - 缓存用户信息
+        //headImg token nickName userId userName
+        wx.setStorage({
+          key: "headImg",
+          data: res.data.headImg
+        })
+        wx.setStorage({
+          key: "token",
+          data: res.data.token
+        })
+        wx.setStorage({
+          key: "nickName",
+          data: res.data.nickName
+        })
         wx.setStorage({
           key: "userId",
           data: res.data.userId
         })
 
         wx.setStorage({
-          key: "token",
-          data: res.data.token
+          key: "userName",
+          data: res.data.userName
         })
+
 
         wx.navigateBack({
           delta: 1
         })
-      }else {
+      } else {
         //失败
         wx.showModal({
           title: '',

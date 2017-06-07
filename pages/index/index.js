@@ -3,12 +3,13 @@
 var app = getApp()
 const config = require('../../config')
 const iconList = require('../../data/local-data')
-
+var util = require('../../utils/util.js')
 
 var pageNo = 0;
 Page({
   data: {
-    list: [],
+    carrouselsAr: [], /** 轮播 */
+    list: [],  /** 要闻列表 */
   },
 
   /** 跳转（政务资讯、办事指南、办事大厅、办事攻略） */
@@ -38,6 +39,36 @@ Page({
     wx.navigateTo({
       url: 'HotNewsDetail/HotNewsDetail'
     })
+  },
+
+  /** 首页轮播请求 */
+  requestAppinitData: function(){
+    var that = this;
+    let url = config.AppinitData
+
+    var para = {
+      "system": "02",
+      "currentVersion": "3.1.81",
+      "imei": "C75C7019-29FA-4F2B-8311-BAA6F29D1845",
+      "model": "iPhone 5s (A1457\/A1518\/A1528\/A1530)",
+      "systemVersion": "10.3.2",
+      "accessToken": "",
+      "sig": "",
+      "scopeAddressCode": ""
+    }
+
+    wx.showLoading({ title: '加载中...' })
+
+    util.RequestManager(url, para, function (res, fail) {
+
+      wx.hideLoading()
+
+      if (res.code == app.globalData.res_success) {
+        //成功
+        that.setData({ carrouselsAr: res.data.carrousels})
+      }
+    })
+
   },
 
   /** 下拉刷新 */
@@ -101,9 +132,14 @@ Page({
 
   onLoad: function () {
     console.log('onLoad')
-
+    /** 设置首页四图标 */
     console.log(iconList)
     this.setData(iconList)
+
+    /** 请求首页轮播 */
+    this.requestAppinitData();
+
+    /** 请求要闻 */
     this.loadNewData();
 
     //调用应用实例的方法获取全局数据

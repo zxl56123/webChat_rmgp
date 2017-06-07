@@ -1,5 +1,7 @@
 var app = getApp()
 
+var qrcode = require('./qrcode');
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -55,10 +57,14 @@ function RequestManager(url, para, successRes, failRes) {
 
       var dic = res.data;
 
-      if (dic.mesg.length) {
-        dic["msg"] = dic["mesg"];
-      } else if (dic.msg.length) {
-        dic["mesg"] = dic["msg"];
+      if (dic.hasOwnProperty("mesg")) { //判断JSON数据是否存在某字段的方法
+        if (dic.mesg.length) {
+          dic["msg"] = dic["mesg"];
+        }
+      } else if (dic.hasOwnProperty("msg")) {
+        if (dic.msg.length) {
+          dic["mesg"] = dic["msg"];
+        }
       } else {
         dic["msg"] = ""
         dic["mesg"] = ""
@@ -82,13 +88,13 @@ function RequestManager(url, para, successRes, failRes) {
 }
 
 function RequestManagerWithToken(url, para, successRes, failRes) {
-  
+
   var token = wx.getStorageSync('token') //同步获取指定key对应的内容
   if (!token) {
-    // //登录无效 - 跳转到登录界面
-    // wx.navigateTo({
-    //   url: '/pages/login/login',
-    // })
+    //登录无效 - 跳转到登录界面
+    wx.redirectTo({  //跳转触发后 当前页面就会被销毁
+      url: '/pages/login/login',
+    })
     return;
   }
 
@@ -98,32 +104,42 @@ function RequestManagerWithToken(url, para, successRes, failRes) {
     method: 'POST',
     header: {
       'content-type': 'application/json',
-      'token': token 
+      'token': token
     },
     dataType: '',
     success: function (res) {
 
       var dic = res.data;
 
-      if (dic.mesg.length) {
-        dic["msg"] = dic["mesg"];
-      } else if (dic.msg.length) {
-        dic["mesg"] = dic["msg"];
+      if (dic.hasOwnProperty("mesg")) { //判断JSON数据是否存在某字段的方法
+        if (dic.mesg.length) {
+          dic["msg"] = dic["mesg"];
+        }
+      } else if (dic.hasOwnProperty("msg")) {
+        if (dic.msg.length) {
+          dic["mesg"] = dic["msg"];
+        }
       } else {
         dic["msg"] = ""
         dic["mesg"] = ""
       }
 
       if (dic.code == "000000") {
-        
-      } else if (dic.code == app.globalData.token_expired || dic.code == app.globalData.token_invalid){
+
+      }
+      else if (dic.code == app.globalData.token_expired || dic.code == app.globalData.token_invalid) {
         //failRes("error" + dic.code)
         //failRes(dic);
 
         //同步清理本地数据缓存
         wx.clearStorageSync()
 
-      }else {
+        //登录无效 - 跳转到登录界面
+        wx.redirectTo({  //跳转触发后 当前页面就会被销毁
+          url: '/pages/login/login',
+        })
+      }
+      else {
 
 
       }
@@ -187,6 +203,19 @@ function verificationPwd(pwd) {
 
 }
 
+function convert_length(length) {
+  return Math.round(wx.getSystemInfoSync().windowWidth * length / 750);
+}
+
+/** 生成二维码 */
+function qrc(id, code, width, height) {
+  qrcode.api.draw(code, {
+    ctx: wx.createCanvasContext(id),
+    width: convert_length(width),
+    height: convert_length(height)
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
   getLocation: getLocation,
@@ -195,5 +224,6 @@ module.exports = {
   convertToStarsArray: convertToStarsArray,
   convertToDistance: convertToDistance,
   verificationUserName: verificationUserName,
-  verificationPwd: verificationPwd
+  verificationPwd: verificationPwd,
+  qrcode: qrc
 }

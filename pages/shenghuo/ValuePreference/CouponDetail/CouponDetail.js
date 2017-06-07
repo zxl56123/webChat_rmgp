@@ -130,6 +130,13 @@ Page({
       if (res.code == app.globalData.res_success) {
         //status 优惠券的使用状态：0-未使用，1-已使用，2-已过期，3-已删除，4-已锁定
         that.setData({ couponInfo: res.data })
+
+        var qrJson = {
+          "type": "1",
+          "code": res.data.couponCode
+        }
+        var qrJsonStr = JSON.stringify(qrJson); //将json对象转换成json对符串 
+        util.qrcode('qrcode', qrJsonStr, 420, 420);
       } else {
 
       }
