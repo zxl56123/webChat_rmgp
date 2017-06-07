@@ -58,11 +58,11 @@ function RequestManager(url, para, successRes, failRes) {
       var dic = res.data;
 
       if (dic.hasOwnProperty("mesg")) { //判断JSON数据是否存在某字段的方法
-        if (dic.mesg.length) {
+        if (dic.mesg != null && dic.mesg.length) {
           dic["msg"] = dic["mesg"];
         }
       } else if (dic.hasOwnProperty("msg")) {
-        if (dic.msg.length) {
+        if (dic.msg != null && dic.msg.length) {
           dic["mesg"] = dic["msg"];
         }
       } else {
@@ -112,11 +112,11 @@ function RequestManagerWithToken(url, para, successRes, failRes) {
       var dic = res.data;
 
       if (dic.hasOwnProperty("mesg")) { //判断JSON数据是否存在某字段的方法
-        if (dic.mesg.length) {
+        if (dic.mesg != null && dic.mesg.length) {
           dic["msg"] = dic["mesg"];
         }
       } else if (dic.hasOwnProperty("msg")) {
-        if (dic.msg.length) {
+        if (dic.msg != null && dic.msg.length) {
           dic["mesg"] = dic["msg"];
         }
       } else {

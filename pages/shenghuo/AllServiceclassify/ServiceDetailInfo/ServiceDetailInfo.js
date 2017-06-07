@@ -13,16 +13,20 @@ Page({
 
     detailDic: {}
   },
-  wxParseTagATap: function(e) {
-    
+  wxParseTagATap: function (e) {
+
     var str = e.currentTarget.dataset.src;
-    
+    if (str instanceof Array) { //判断是否为数组类型
+      if (str.length > 1) {
+        str = str[0]
+      }
+    }
     var strAr = new Array(); //定义一数组 
     strAr = str.split(":"); //字符分割 
 
     console.log(strAr)
 
-    if (strAr[0] == "tel"){
+    if (strAr[0] == "tel") {
 
       let phoneNum = strAr[1]
       //拨打电话
@@ -31,7 +35,7 @@ Page({
       })
     }
 
-    
+
   },
   /** 去掉转义字符 */
   excludeSpecial: function (s) {

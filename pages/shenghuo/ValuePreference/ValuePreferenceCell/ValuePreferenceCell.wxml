@@ -8,7 +8,7 @@
     <block wx:else>
       <image class="backgroundImg" src="/images/shenghuo/lingquan/quan01.png"></image>
     </block>
-    <image class="cell-left-image" src="{{doorImg}}"></image>
+    <image class="cell-left-image" src="http://m.jointem.com/{{topicImg}}"></image>
     <view class="cell-center-container">
       <text class="center-title">{{doorName}}</text>
       <view class="center-title-2-container">
