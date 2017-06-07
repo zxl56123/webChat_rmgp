@@ -271,8 +271,8 @@ Page({
 
 
         var couponIdAr = [];
-        for (var i = 0; i < res.data.data.dataList.length; i++) {
-          var model = res.data.data.dataList[i];
+        for (var i = 0; i < that.data.couponSearchList[tabIndex].length; i++) {
+          var model = that.data.couponSearchList[tabIndex][i];
           couponIdAr.push(model["couponId"])
         }
 
@@ -280,8 +280,8 @@ Page({
         that.requestReceiveCouponUrl(couponIdAr)
 
       },
-      fail: function (res) { },
-      complete: function (res) { wx.hideLoading() },
+      fail: function (error) { },
+      complete: function () { wx.hideLoading() },
 
     })
 
@@ -385,6 +385,10 @@ Page({
           icon: 'success',
           duration: 3000
         })
+
+        /** 下拉刷新 - 网络请求: 按条件搜索 */
+        that.loadNewData(selectedCategoryName, selectedfcName, that.data.localCtiyName)
+
       } else if (res.code == app.globalData.token_expired || res.code == app.globalData.token_invalid) {
         wx.navigateTo({
           url: '/pages/login/login',
@@ -400,10 +404,10 @@ Page({
     })
   },
   /** 去使用优惠券 */
-  useCoupon: function(e){
+  useCoupon: function (e) {
     let couponId = e.currentTarget.dataset.couponid
     let url = "CouponDetail/CouponDetail?couponId=" + couponId
-    
+
     wx.navigateTo({
       url: url,
     })
