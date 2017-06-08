@@ -13,7 +13,8 @@
       <text class="center-title">{{doorName}}</text>
       <view class="center-title-2-container">
         <text class="center-title-2-container-1">{{discountMoney}}</text>
-        <text class="center-title-2-container-2">{{money == null ? "无门槛使用" : "满" + money + "元可用" }}</text>
+        <!--category=0优惠券(满多少使用) category=1代金券(无门槛使用)-->
+        <text class="center-title-2-container-2">{{category == "1" ? "无门槛使用" : "满" + money + "元可用" }}</text>
       </view>
       <view class="center-title-3-container">
         <text class="center-title-3-container-1">{{scName}}</text>
@@ -24,7 +25,7 @@
       <text class="cell-right-container-1">剩余{{num}}</text>
 
       <block wx:if="{{alreadyReceived == 'ok' }}">
-        <text class="{{couponType == 1 ? 'cell-right-container-2-daodian-use' : 'cell-right-container-2-wangdian-use'}}" data-couponId="{{couponId}}" bindtap="useCoupon">去使用</text>
+        <text class="{{couponType == 1 ? 'cell-right-container-2-daodian-use' : 'cell-right-container-2-wangdian-use'}}" data-couponId="{{couponId}}" data-category="{{category}}" data-coupon-type="{{couponType}}" data-door-name="{{doorName}}" bindtap="useCoupon">去使用</text>
       </block>
       <block wx:else>
         <text class="{{couponType == 1 ? 'cell-right-container-2-brown' : 'cell-right-container-2-blue'}}" data-couponId="{{couponId}}" bindtap="tapAddCoupon"> 立即领取</text>

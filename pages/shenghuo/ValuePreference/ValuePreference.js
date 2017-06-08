@@ -406,7 +406,21 @@ Page({
   /** 去使用优惠券 */
   useCoupon: function (e) {
     let couponId = e.currentTarget.dataset.couponid
-    let url = "CouponDetail/CouponDetail?couponId=" + couponId
+    //category=0优惠券 category=1代金券
+    let category = parseInt(e.currentTarget.dataset.category)
+    //couponType = 1 / 线下券 couponType= 0 / 线上券
+    let couponType = parseInt(e.currentTarget.dataset.couponType)
+
+    let doorName = e.currentTarget.dataset.doorName
+
+    var url = ""
+    if (couponType == 1) {
+      //线下券-到店使用
+      url = "CouponDetail/CouponDetail?couponId=" + couponId + "&category=" + category
+    } else if (couponType == 0) {
+      //网店
+      url = "../OnlineStore/OnlineStore?title=" + doorName
+    } else { }
 
     wx.navigateTo({
       url: url,

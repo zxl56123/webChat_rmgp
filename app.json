@@ -29,6 +29,7 @@
     "pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryListCell/ServiceCategoryListCell",
     "pages/shenghuo/AllServiceclassify/ServiceCategoryList/ServiceCategoryList",
     "pages/shenghuo/AllServiceclassify/ServiceDetailInfo/ServiceDetailInfo",
+    "pages/shenghuo/OnlineStore/OnlineStore",
     
     "pages/login/login"
   ],

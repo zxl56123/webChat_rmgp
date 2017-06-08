@@ -2,6 +2,8 @@
 var app = getApp()
 const config = require('../../../../config')
 var util = require('../../../../utils/util.js')
+
+var category = "" /** category=0优惠券 category= 1代金券 */
 //CouponDetailUrl
 //UserCouponIdUrl
 //UserCouponInfoUrl
@@ -16,7 +18,7 @@ Page({
 
   },
   /** 点击地图导航 */
-  tapDitu: function(e){
+  tapDitu: function (e) {
     var companyInfo = e.currentTarget.dataset.companyinfo;
     wx.openLocation({
       latitude: Number(companyInfo.lattitude),
@@ -28,7 +30,7 @@ Page({
 
   },
   /** 点击拨打电话 */
-  tapPhone: function(e){
+  tapPhone: function (e) {
     let phone = e.currentTarget.dataset.phone;
     wx.makePhoneCall({
       phoneNumber: phone,
@@ -40,6 +42,7 @@ Page({
   onLoad: function (options) {
 
     let couponId = options.couponId;
+    category = options.category;
     //1.网络请求-获取优惠券详情
     this.requestCouponDetail(couponId);
     //2.网络请求-获取用户优惠券表id
@@ -131,10 +134,23 @@ Page({
         //status 优惠券的使用状态：0-未使用，1-已使用，2-已过期，3-已删除，4-已锁定
         that.setData({ couponInfo: res.data })
 
-        var qrJson = {
-          "type": "1",
-          "code": res.data.couponCode
+        /** category=0优惠券 category= 1代金券 */
+        var qrJson = {};
+
+        if (category == 0) {
+          qrJson = {
+            "type": "1",
+            "code": res.data.couponCode
+          }
+        } else if (category == 1) {
+          qrJson = {
+            "type": "2",
+            "code": res.data.couponCode
+          }
+        } else {
+
         }
+        
         var qrJsonStr = JSON.stringify(qrJson); //将json对象转换成json对符串 
         util.qrcode('qrcode', qrJsonStr, 420, 420);
       } else {
