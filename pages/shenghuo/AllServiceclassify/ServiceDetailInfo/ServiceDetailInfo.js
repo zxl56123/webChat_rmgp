@@ -13,6 +13,30 @@ Page({
 
     detailDic: {}
   },
+  /** 点击地图导航 */
+  tapDitu: function (e) {
+    let lat = e.currentTarget.dataset.lat;
+    let long = e.currentTarget.dataset.long;
+    let name = e.currentTarget.dataset.name;
+    let address = e.currentTarget.dataset.address;
+
+    wx.openLocation({
+      latitude: Number(lat),
+      longitude: Number(long),
+      scale: '18', //缩放比例，范围5~18，默认为18
+      name: name,
+      address: address,
+    })
+
+  },
+  /** 点击拨打电话 */
+  tapPhone: function (e) {
+    let phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
+  },
+  /** 响应富文本框内解析的点击事件 */
   wxParseTagATap: function (e) {
 
     var str = e.currentTarget.dataset.src;

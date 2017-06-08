@@ -20,7 +20,36 @@
     </view>
   </view>
   <view class="spaceSeparateView"></view>
-  <view class="goodServersDetail-company-address">{{detailDic.serviceMerchantName}}</view>
+  <view class="goodServersDetail-company-address">
+    <view class="serviceName">{{detailDic.serviceMerchantName}}</view>
+    <view class="subtitle">{{detailDic.serviceDetailAddress}}</view>
+  </view>
+
+  <view class="spaceSeparateView"></view>
+  <view class="middle-container">
+
+    <view hidden="{{detailDic.serviceTel === '' }}" class="cell-container">
+      <view class="cell-container-title">电话</view>
+      <view class="cell-container-subtitle">{{detailDic.serviceTel}}</view>
+      <image class="phone-address-common" src="/images/icon/call01.png" data-phone="{{detailDic.serviceTel}}" bindtap="tapPhone"></image>
+    </view>
+    <view class="cell-container">
+      <view class="cell-container-title">服务类型</view>
+      <view class="cell-container-subtitle">{{detailDic.serviceType}}</view>
+    </view>
+    <view class="cell-container">
+      <view class="cell-container-title">服务区域</view>
+      <view class="cell-container-subtitle">{{detailDic.serviceAreaName}}</view>
+    </view>
+    <view hidden="{{detailDic.serviceLatitude === '' }}" class="cell-container">
+      <view class="cell-container-title">地址</view>
+      <view class="cell-container-subtitle">{{detailDic.serviceDetailAddress}}</view>
+      <image class="phone-address-common" src="/images/icon/daoh01.png" data-name="{{detailDic.serviceMerchantName}}" data-address="{{detailDic.serviceDetailAddress}}" data-lat="{{detailDic.serviceLatitude}}" data-long="{{detailDic.serviceLongitude}}" bindtap="tapDitu"></image>
+
+    </view>
+
+  </view>
+
   <view class="spaceSeparateView"></view>
 
   <view class="wxParse">
