@@ -4,7 +4,8 @@
 
 <import src="../../../../wxParse/wxParse.wxml" />
 
-<view class="ServiceDetailInfo-container">
+<scroll-view class="ServiceDetailInfo-container" scroll-y="true">
+  <!--<view class="ServiceDetailInfo-container">-->
   <image class="ServiceDetailInfo-image" src="http://m.jointem.com/{{detailDic.serviceContentImgUrl}}"></image>
   <view class="goodServersDetail-company-name">
     <view class="titleName">{{detailDic.serviceTitle}}</view>
@@ -55,4 +56,12 @@
   <view class="wxParse">
     <template is="wxParse" data="{{wxParseData:htmlContentStr.nodes}}" />
   </view>
+  <!--</view>-->
+
+</scroll-view>
+
+<view class="bottom-bar-container">
+  <view class="classname">电话</view>
+  <view class="classname">在线预约</view>
+
 </view>
