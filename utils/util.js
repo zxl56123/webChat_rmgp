@@ -23,6 +23,10 @@ function formatNumber(n) {
 /** 定位 */
 function getLocation(successRes, failRes) {
   var that = this
+  /** 显示loading */
+  wx.showLoading({
+    title: '加载中...',
+  })
   wx.getLocation({
     type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
     success: function (res) {
@@ -39,12 +43,20 @@ function getLocation(successRes, failRes) {
     },
     complete: function () {
       // complete  
+      /** 隐藏loading */
+      wx.hideLoading()
     }
   })
 }
 
 /** 网络请求-POST */
 function RequestManager(url, para, successRes, failRes) {
+
+  /** 显示loading */
+  wx.showLoading({
+    title: '加载中...',
+  })
+
   wx.request({
     url: url,
     data: para,
@@ -83,6 +95,11 @@ function RequestManager(url, para, successRes, failRes) {
     fail: function (error) {
       failRes(error)
       console.log(url + "      ***********->      " + error)
+    },
+    complete: function () {
+      // complete  
+      /** 隐藏loading */
+      wx.hideLoading()
     }
   })
 }
@@ -97,6 +114,11 @@ function RequestManagerWithToken(url, para, successRes, failRes) {
     })
     return;
   }
+
+  /** 显示loading */
+  wx.showLoading({
+    title: '加载中...',
+  })
 
   wx.request({
     url: url,
@@ -151,6 +173,11 @@ function RequestManagerWithToken(url, para, successRes, failRes) {
     fail: function (error) {
       failRes(error)
       console.log(url + "      ***********->      " + error)
+    },
+    complete: function () {
+      // complete  
+      /** 隐藏loading */
+      wx.hideLoading()
     }
   })
 }

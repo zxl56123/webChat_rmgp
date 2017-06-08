@@ -45,6 +45,18 @@ Page({
     shownavindex: ''
 
   },
+  tapPreferenceCell: function (e) {
+
+    let doorName = e.currentTarget.dataset.doorName
+    let doorId = e.currentTarget.dataset.doorId
+
+    //网店
+    let url = "../OnlineStore/OnlineStore?title=" + doorName + "&doorId=" + doorId
+
+    wx.navigateTo({
+      url: url,
+    })
+  },
 
   scroll: function (e) {
 
@@ -412,25 +424,19 @@ Page({
     let couponType = parseInt(e.currentTarget.dataset.couponType)
 
     let doorName = e.currentTarget.dataset.doorName
-
+    let doorId = e.currentTarget.dataset.doorId
     var url = ""
     if (couponType == 1) {
       //线下券-到店使用
-      url = "CouponDetail/CouponDetail?couponId=" + couponId + "&category=" + category
+      url = "CouponDetail/CouponDetail?couponId=" + couponId + "&category=" + category 
     } else if (couponType == 0) {
       //网店
-      url = "../OnlineStore/OnlineStore?title=" + doorName
+      url = "../OnlineStore/OnlineStore?title=" + doorName + "&doorId=" + doorId
     } else { }
 
     wx.navigateTo({
       url: url,
     })
-
-  },
-
-  /** 获取用户优惠券信息 */
-  requestUserCouponInfo: function (userCouponId) {
-
 
   },
 

@@ -4,7 +4,7 @@
 <import src="../../../stars/stars-template.wxml" />
 
 <template name="GoodLifeCell">
-  <view class="goodLifeCell-container">
+  <view class="goodLifeCell-container" data-door-name="{{doorName}}" data-door-id="{{doorId}}" bindtap="tapGoodLifeCell">
     <view class="left-container">
       <image class="left-image" src="{{doorImg}}"></image>
     </view>

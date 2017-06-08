@@ -14,7 +14,7 @@
 
 <scroll-view class="scroll-Goods-list-container" scroll-y="true">
 
-  <swiper catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
+  <swiper hidden="{{advertCaroucelsAr != null }}" catchtap="onSwiperTap" vertical="{{false}}" indicator-dots="true" autoplay="true" interval="5000">
 
     <block wx:for="{{advertCaroucelsAr}}" wx:for-item="item" wx:for-index="index" wx:key="key">
       <swiper-item>

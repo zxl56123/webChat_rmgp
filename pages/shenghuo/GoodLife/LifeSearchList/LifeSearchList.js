@@ -17,6 +17,16 @@ Page({
   data: {
     LifeSearchList: []
   },
+  /** 点击吃喝玩乐cell 跳转->网店 */
+  tapGoodLifeCell: function (e) {
+    let doorName = e.currentTarget.dataset.doorName
+    let doorId = e.currentTarget.dataset.doorId
+    //网店
+    let url = "../../OnlineStore/OnlineStore?title=" + doorName + "&doorId=" + doorId
+    wx.navigateTo({
+      url: url,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

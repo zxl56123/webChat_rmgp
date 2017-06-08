@@ -13,6 +13,8 @@ Page({
    */
   onLoad: function (options) {
     let title = options.title
+    let doorId = options.doorId
+    
     wx.setNavigationBarTitle({
       title: title
     })

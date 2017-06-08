@@ -20,6 +20,16 @@ Page({
     localCtiyName: "定位中...",  /** 当前定位城市 */
     list: [] /** 便民首页优选推荐店铺列表 */
   },
+  /** 点击优选推荐 */
+  tapGoodLifeCell: function(e){
+    var model = e.currentTarget.dataset.model;
+    let url = "OnlineStore/OnlineStore?title=" + model.doorName + " & doorId=" + model.doorId
+    //网店
+    wx.navigateTo({
+      url: url,
+    })
+
+  },
 
   /** 点击 */
   tapGridCell: function (event) {
@@ -160,6 +170,8 @@ Page({
         model["province"] = model["provinceName"];
         model["city"] = model["cityName"];
         model["country"] = model["districtName"];
+        model["doorName"] = model["name"];
+        model["doorId"] = model["id"];
         //model["maxDiscountPrice"] = model["maxDiscountPrice"];
         tempAr.push(model)
       }

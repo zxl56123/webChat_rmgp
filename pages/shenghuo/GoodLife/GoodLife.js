@@ -35,6 +35,16 @@ Page({
     quanchengSelectedName: "全城",
     isfull: false,
   },
+  /** 点击吃喝玩乐cell 跳转->网店 */
+  tapGoodLifeCell: function (e) {
+    let doorName = e.currentTarget.dataset.doorName
+    let doorId = e.currentTarget.dataset.doorId
+    //网店
+    let url = "../OnlineStore/OnlineStore?title=" + doorName + "&doorId=" + doorId
+    wx.navigateTo({
+      url: url,
+    })
+  },
 
   //点击GridCell
   tapGridCell: function (e) {
@@ -62,9 +72,9 @@ Page({
       key: TENCENT_KEY
     });
     /** 获取定位 */
-    wx.showLoading({ title: '加载中...', })
+
     util.getLocation((successRes, failRes) => {
-      wx.hideLoading()
+
       console.log(successRes)
       console.log(failRes)
 
@@ -73,6 +83,7 @@ Page({
       lati = successRes.latitude
 
       // 调用接口-逆地址解析
+      wx.showLoading({ title: '加载中...', })
       qqmapsdk.reverseGeocoder({
         location: {
           latitude: successRes.latitude,
@@ -100,6 +111,7 @@ Page({
         },
         complete: function (res) {
           console.log(res);
+          wx.hideLoading()
         }
       });
     })
@@ -112,11 +124,8 @@ Page({
       "category": 8
     }
 
-    wx.showLoading({ title: '加载中...' })
-
     util.RequestManager(url, para, function (res, fail) {
 
-      wx.hideLoading()
       that.setData({ advertCaroucelsAr: res.data })
 
     })
@@ -126,8 +135,6 @@ Page({
     let url = config.ChildCateUrl
 
     var para = { "id": 13530 }
-
-    wx.showLoading({ title: '加载中...' })
 
     util.RequestManager(url, para, function (res, fail) {
 
@@ -146,7 +153,6 @@ Page({
         ChildCateAr.push(model)
       }
 
-      wx.hideLoading()
       that.setData({ ChildCateAr: ChildCateAr })
 
     })
@@ -199,11 +205,7 @@ Page({
       "country": null
     }
 
-    wx.showLoading({ title: '加载中...' })
-
     util.RequestManager(url, para, function (res, fail) {
-
-      wx.hideLoading()
 
       var tempAr = [];
 
@@ -237,12 +239,7 @@ Page({
 
     var para = doorIdAr
 
-    wx.showLoading({ title: '加载中...' })
-
     util.RequestManager(url, para, function (res, fail) {
-
-      wx.hideLoading()
-
 
       var tempAr = that.data.LifeSearchList;
 
@@ -253,7 +250,7 @@ Page({
           if (discountModel["doorId"] == model["doorId"]) {
             //赋值
             tempAr[i]["maxDiscountPrice"] = discountModel["maxDiscountPrice"];
-            
+
           }
 
         }

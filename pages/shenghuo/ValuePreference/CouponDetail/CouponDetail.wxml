@@ -10,7 +10,7 @@
       <image class="cell-left-image" src="http://m.jointem.com/{{couponDetail.topicImg}}"></image>
       <view class="cell-center-container">
         <view class="center-title">{{couponDetail.doorName}}</view>
-        <view class="center-title-1">{{couponDetail.money == null ? "无门槛使用" : "满" + money + "元可用" }}</view>
+        <view class="center-title-1">{{couponDetail.money == null ? "无门槛使用" : "满" + couponDetail.money + "元可用" }}</view>
         <view class="center-title-2">{{couponDetail.scName}}</view>
       </view>
       <view class="cell-right-container">
