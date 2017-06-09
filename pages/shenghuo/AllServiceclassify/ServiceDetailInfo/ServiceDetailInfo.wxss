@@ -4,7 +4,7 @@
   position: absolute;
   top: 0;
   width: 100%;
-  height:1106rpx; /**1334-64*2-100=1106rpx */
+  height: 1106rpx; /**1334-64*2-100=1106rpx */
   display: flex;
   flex-direction: column;
 }
@@ -127,5 +127,48 @@
   bottom: 0;
   height: 100rpx;
   width: 100%;
-  background-color: red;
+  /*background-color: red;*/
+  border-top: 1px solid #efefef;
+}
+
+.bottom-call-view {
+  background-color: #0164a6;
+  color: #fff;
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /** 水平居中 */
+  
+}
+
+.bottom-call-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.bottom-call-title {
+  font: 16px;
+}
+
+.bottom-yuyue-view {
+  background-color: #fff;
+  color: #0164a6;
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /** 水平居中 */
+}
+
+.bottom-yuyue-image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.bottom-yuyue-titlte {
+  font: 16px;
+  font-weight: bold;
 }

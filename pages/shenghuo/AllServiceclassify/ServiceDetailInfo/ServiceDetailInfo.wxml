@@ -61,7 +61,13 @@
 </scroll-view>
 
 <view class="bottom-bar-container">
-  <view class="classname">电话</view>
-  <view class="classname">在线预约</view>
 
+  <view class="bottom-call-view" data-phone="{{detailDic.serviceTel}}" bindtap="tapPhone">
+    <image class="bottom-call-image" src="/images/icon/call02.png"></image>
+    <view class="bottom-call-title">电话</view>
+  </view>
+  <view class="bottom-yuyue-view" bindtap="tapYuyue">
+    <image class="bottom-yuyue-image" src="/images/icon/yuyue.png"></image>
+    <view class="bottom-yuyue-titlte">在线预约</view>
+  </view>
 </view>

@@ -36,6 +36,17 @@ Page({
       phoneNumber: phone,
     })
   },
+  /** 点击预约 */
+  tapYuyue: function (e) {
+    
+    var model = this.data.detailDic
+    let url = "Yuyue/Yuyue?model=" + model;
+    wx.navigateTo({
+      url: url,
+    })
+
+
+  },
   /** 响应富文本框内解析的点击事件 */
   wxParseTagATap: function (e) {
 

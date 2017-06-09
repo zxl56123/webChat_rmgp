@@ -1,0 +1,19 @@
+<!--pages/shenghuo/AllServiceclassify/ServiceDetailInfo/Yuyue/Yuyue.wxml-->
+<!--<text>pages/shenghuo/AllServiceclassify/ServiceDetailInfo/Yuyue/Yuyue.wxml</text>-->
+
+<view class="yuyue-container">
+  <view class="section-container">*
+    <view class="cell-title">1.联系人</view>  
+  </view>
+  <input class="common-input"  type="text" data-type="contactName" bindinput="bindKeyInput" placeholder="请输入内容" />
+
+  <view class="section-container">*
+    <view class="cell-title">2.联系电话</view>
+  </view>
+    <input class="common-input"  type="text" data-type="contactPhone" bindinput="bindKeyInput" placeholder="请输入内容" />
+
+  <view class="remark-title">3.备注</view>
+  <textarea class="textarea-remark" placeholder="请输入备注" auto-focus />
+
+  <view class="bottom-view">提交预约</view>
+</view>
